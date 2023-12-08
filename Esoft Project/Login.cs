@@ -34,7 +34,7 @@ namespace Esoft_Project
             if (IsValidUser(username, password))
             {
                 this.Hide();
-                formDashboard obj = new formDashboard();
+                formMain obj = new formMain();
                 obj.Show();
             }
             else
