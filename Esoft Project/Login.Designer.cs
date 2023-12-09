@@ -1,4 +1,6 @@
-﻿namespace Esoft_Project
+﻿using System;
+
+namespace Esoft_Project
 {
     partial class formLogin
     {
@@ -30,17 +32,17 @@
         {
             this.components = new System.ComponentModel.Container();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
-            this.labelTitle = new System.Windows.Forms.Label();
-            this.labelUsername = new System.Windows.Forms.Label();
-            this.labelPassword = new System.Windows.Forms.Label();
-            this.textboxUsername = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.textboxPassword = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.txtUsername = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.txtPassword = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.btnLogin = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.labelEsoftHospitals = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxBg = new System.Windows.Forms.PictureBox();
+            this.imgBg = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBg)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -58,78 +60,79 @@
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color2 = System.Drawing.Color.White;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.ButtonEdgeInset = 10;
             // 
-            // labelTitle
+            // lblTitle
             // 
-            this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Ivy Mode", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(63, 110);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(213, 36);
-            this.labelTitle.TabIndex = 0;
-            this.labelTitle.Text = "Welcome Back!";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Ivy Mode", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(63, 110);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(213, 36);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Welcome Back!";
             // 
-            // labelUsername
+            // lblUsername
             // 
-            this.labelUsername.AutoSize = true;
-            this.labelUsername.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsername.Location = new System.Drawing.Point(63, 171);
-            this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(66, 16);
-            this.labelUsername.TabIndex = 1;
-            this.labelUsername.Text = "Username";
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(63, 171);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(66, 16);
+            this.lblUsername.TabIndex = 1;
+            this.lblUsername.Text = "Username";
             // 
-            // labelPassword
+            // lblPassword
             // 
-            this.labelPassword.AutoSize = true;
-            this.labelPassword.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPassword.Location = new System.Drawing.Point(63, 241);
-            this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(62, 16);
-            this.labelPassword.TabIndex = 2;
-            this.labelPassword.Text = "Password";
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Location = new System.Drawing.Point(63, 241);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(62, 16);
+            this.lblPassword.TabIndex = 2;
+            this.lblPassword.Text = "Password";
             // 
-            // textboxUsername
+            // txtUsername
             // 
-            this.textboxUsername.Location = new System.Drawing.Point(63, 197);
-            this.textboxUsername.Name = "textboxUsername";
-            this.textboxUsername.Size = new System.Drawing.Size(299, 33);
-            this.textboxUsername.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.textboxUsername.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(220)))), ((int)(((byte)(204)))));
-            this.textboxUsername.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(220)))), ((int)(((byte)(204)))));
-            this.textboxUsername.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.txtUsername.Location = new System.Drawing.Point(63, 197);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(299, 33);
+            this.txtUsername.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
+            this.txtUsername.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(220)))), ((int)(((byte)(204)))));
+            this.txtUsername.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(220)))), ((int)(((byte)(204)))));
+            this.txtUsername.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.textboxUsername.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.textboxUsername.StateCommon.Border.Rounding = 20;
-            this.textboxUsername.StateCommon.Border.Width = 1;
-            this.textboxUsername.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textboxUsername.StateCommon.Content.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textboxUsername.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.textboxUsername.TabIndex = 3;
+            this.txtUsername.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.txtUsername.StateCommon.Border.Rounding = 20;
+            this.txtUsername.StateCommon.Border.Width = 1;
+            this.txtUsername.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtUsername.StateCommon.Content.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.txtUsername.TabIndex = 3;
             // 
-            // textboxPassword
+            // txtPassword
             // 
-            this.textboxPassword.Location = new System.Drawing.Point(63, 272);
-            this.textboxPassword.Name = "textboxPassword";
-            this.textboxPassword.PasswordChar = '●';
-            this.textboxPassword.Size = new System.Drawing.Size(299, 33);
-            this.textboxPassword.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.textboxPassword.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(220)))), ((int)(((byte)(204)))));
-            this.textboxPassword.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(220)))), ((int)(((byte)(204)))));
-            this.textboxPassword.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.txtPassword.Location = new System.Drawing.Point(63, 272);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '●';
+            this.txtPassword.Size = new System.Drawing.Size(299, 33);
+            this.txtPassword.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
+            this.txtPassword.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(220)))), ((int)(((byte)(204)))));
+            this.txtPassword.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(220)))), ((int)(((byte)(204)))));
+            this.txtPassword.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.textboxPassword.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.textboxPassword.StateCommon.Border.Rounding = 20;
-            this.textboxPassword.StateCommon.Border.Width = 1;
-            this.textboxPassword.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textboxPassword.StateCommon.Content.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textboxPassword.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.textboxPassword.TabIndex = 4;
-            this.textboxPassword.UseSystemPasswordChar = true;
+            this.txtPassword.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.txtPassword.StateCommon.Border.Rounding = 20;
+            this.txtPassword.StateCommon.Border.Width = 1;
+            this.txtPassword.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPassword.StateCommon.Content.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.txtPassword.TabIndex = 4;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.Location = new System.Drawing.Point(63, 351);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
@@ -146,8 +149,17 @@
             this.btnLogin.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnLogin.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
             this.btnLogin.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.StateDisabled.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnLogin.StateDisabled.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnLogin.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnLogin.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnLogin.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnLogin.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnLogin.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnLogin.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Values.Text = "Login";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // labelEsoftHospitals
             // 
@@ -169,15 +181,15 @@
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBoxBg
+            // imgBg
             // 
-            this.pictureBoxBg.Image = global::Esoft_Project.Properties.Resources.Doctor_pana;
-            this.pictureBoxBg.Location = new System.Drawing.Point(441, 64);
-            this.pictureBoxBg.Name = "pictureBoxBg";
-            this.pictureBoxBg.Size = new System.Drawing.Size(439, 408);
-            this.pictureBoxBg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxBg.TabIndex = 6;
-            this.pictureBoxBg.TabStop = false;
+            this.imgBg.Image = global::Esoft_Project.Properties.Resources.Doctor_pana;
+            this.imgBg.Location = new System.Drawing.Point(441, 64);
+            this.imgBg.Name = "imgBg";
+            this.imgBg.Size = new System.Drawing.Size(439, 408);
+            this.imgBg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgBg.TabIndex = 6;
+            this.imgBg.TabStop = false;
             // 
             // formLogin
             // 
@@ -188,13 +200,13 @@
             this.ClientSize = new System.Drawing.Size(892, 532);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelEsoftHospitals);
-            this.Controls.Add(this.pictureBoxBg);
+            this.Controls.Add(this.imgBg);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.textboxPassword);
-            this.Controls.Add(this.textboxUsername);
-            this.Controls.Add(this.labelPassword);
-            this.Controls.Add(this.labelUsername);
-            this.Controls.Add(this.labelTitle);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.lblUsername);
+            this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -204,24 +216,29 @@
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.formLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
+        private void formLogin_Load(object sender, EventArgs e)
+        {
+           
+        }
+
         #endregion
 
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
-        private System.Windows.Forms.Label labelTitle;
-        private System.Windows.Forms.Label labelUsername;
-        private System.Windows.Forms.Label labelPassword;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textboxUsername;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox textboxPassword;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Label lblPassword;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtUsername;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPassword;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnLogin;
-        private System.Windows.Forms.PictureBox pictureBoxBg;
+        private System.Windows.Forms.PictureBox imgBg;
         private System.Windows.Forms.Label labelEsoftHospitals;
         private System.Windows.Forms.PictureBox pictureBox1;
     }

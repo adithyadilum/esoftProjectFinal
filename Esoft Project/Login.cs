@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,14 +14,56 @@ namespace Esoft_Project
 {
     public partial class formLogin : KryptonForm
     {
+        private const string ConnectionString = "Data Source=Vostro3760;Initial Catalog=HMSdb;Integrated Security=True";
         public formLogin()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
 
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please enter both username and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (IsValidUser(username, password))
+            {
+                this.Hide();
+                formDashboard obj = new formDashboard();
+                obj.Show();
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPassword.StateCommon.Border.Color1 = Color.Red;
+                txtPassword.StateCommon.Border.Color2 = Color.Red;
+                txtUsername.StateCommon.Border.Color1 = Color.Red;
+                txtUsername.StateCommon.Border.Color2 = Color.Red;
+            }
+        }
+
+        private bool IsValidUser(string username, string password)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Password = @Password";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Username", username);
+                    command.Parameters.AddWithValue("@Password", password);
+
+                    int count = (int)command.ExecuteScalar();
+
+                    return count > 0;
+                }
+            }
         }
     }
 }
