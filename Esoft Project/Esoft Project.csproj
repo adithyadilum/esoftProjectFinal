@@ -75,6 +75,48 @@
     <Compile Include="formMain.Designer.cs">
       <DependentUpon>formMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\formBilling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\formBilling.Designer.cs">
+      <DependentUpon>formBilling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\formEmergency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\formEmergency.Designer.cs">
+      <DependentUpon>formEmergency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\formInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\formInventory.Designer.cs">
+      <DependentUpon>formInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\formOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\formOverview.Designer.cs">
+      <DependentUpon>formOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\formRecords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\formRecords.Designer.cs">
+      <DependentUpon>formRecords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\formStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\formStaff.Designer.cs">
+      <DependentUpon>formStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\formTests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\formTests.Designer.cs">
+      <DependentUpon>formTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="HMSdbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -98,6 +140,27 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="formMain.resx">
       <DependentUpon>formMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\formBilling.resx">
+      <DependentUpon>formBilling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\formEmergency.resx">
+      <DependentUpon>formEmergency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\formInventory.resx">
+      <DependentUpon>formInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\formOverview.resx">
+      <DependentUpon>formOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\formRecords.resx">
+      <DependentUpon>formRecords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\formStaff.resx">
+      <DependentUpon>formStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\formTests.resx">
+      <DependentUpon>formTests.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
