@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Esoft_Project
+namespace Esoft_Project.Forms
 {
-    public partial class formDashboard : Form
+    public partial class formEmergency : Form
     {
-        public formDashboard()
+        public formEmergency()
         {
             InitializeComponent();
         }

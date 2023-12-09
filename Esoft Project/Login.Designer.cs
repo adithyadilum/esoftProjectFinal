@@ -197,7 +197,7 @@ namespace Esoft_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(892, 532);
+            this.ClientSize = new System.Drawing.Size(924, 540);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelEsoftHospitals);
             this.Controls.Add(this.imgBg);
