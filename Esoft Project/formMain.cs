@@ -85,6 +85,7 @@ namespace Esoft_Project
         }
         private void formMain_Load(object sender, EventArgs e)
         {
+            btnOverview.PerformClick();
         }
 
         private void OpenChildForm(Form childForm)
