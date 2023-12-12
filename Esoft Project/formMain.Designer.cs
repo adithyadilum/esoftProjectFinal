@@ -31,6 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.panelMenu = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.panelLogo = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.labelEsoftHospitals = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelFormContainer = new Esoft_Project.CustomPanel();
+            this.lblCurrent = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.panelTitle = new Esoft_Project.CustomPanel();
+            this.labelTImer = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.bellIcon = new FontAwesome.Sharp.IconPictureBox();
+            this.userIcon = new FontAwesome.Sharp.IconPictureBox();
             this.panelContainer7 = new Esoft_Project.CustomPanel();
             this.btnpanelBilling = new Esoft_Project.CustomPanel();
             this.btnBilling = new FontAwesome.Sharp.IconButton();
@@ -54,17 +63,15 @@
             this.btnOverview = new FontAwesome.Sharp.IconButton();
             this.btnPanelClose = new Esoft_Project.CustomPanel();
             this.btnClose = new FontAwesome.Sharp.IconButton();
-            this.panelLogo = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.labelEsoftHospitals = new System.Windows.Forms.Label();
-            this.panelTitle = new Esoft_Project.CustomPanel();
-            this.labelTImer = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.bellIcon = new FontAwesome.Sharp.IconPictureBox();
-            this.userIcon = new FontAwesome.Sharp.IconPictureBox();
-            this.panelFormContainer = new Esoft_Project.CustomPanel();
-            this.lblCurrent = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.panelMenu)).BeginInit();
             this.panelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelLogo)).BeginInit();
+            this.panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelFormContainer.SuspendLayout();
+            this.panelTitle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bellIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userIcon)).BeginInit();
             this.panelContainer7.SuspendLayout();
             this.btnpanelBilling.SuspendLayout();
             this.panelContainer6.SuspendLayout();
@@ -80,13 +87,6 @@
             this.panelContainer1.SuspendLayout();
             this.btnpanelOverview.SuspendLayout();
             this.btnPanelClose.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelLogo)).BeginInit();
-            this.panelLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panelTitle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bellIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userIcon)).BeginInit();
-            this.panelFormContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -122,6 +122,137 @@
             this.panelMenu.StateCommon.Color1 = System.Drawing.Color.White;
             this.panelMenu.StateCommon.Color2 = System.Drawing.Color.White;
             this.panelMenu.TabIndex = 0;
+            // 
+            // panelLogo
+            // 
+            this.panelLogo.Controls.Add(this.pictureBox1);
+            this.panelLogo.Controls.Add(this.labelEsoftHospitals);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(0);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.panelLogo.Size = new System.Drawing.Size(217, 84);
+            this.panelLogo.StateCommon.Color1 = System.Drawing.Color.White;
+            this.panelLogo.StateCommon.Color2 = System.Drawing.Color.White;
+            this.panelLogo.TabIndex = 0;
+            // 
+            // labelEsoftHospitals
+            // 
+            this.labelEsoftHospitals.AutoSize = true;
+            this.labelEsoftHospitals.BackColor = System.Drawing.Color.White;
+            this.labelEsoftHospitals.Font = new System.Drawing.Font("Ivy Mode", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEsoftHospitals.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.labelEsoftHospitals.Location = new System.Drawing.Point(55, 21);
+            this.labelEsoftHospitals.Name = "labelEsoftHospitals";
+            this.labelEsoftHospitals.Size = new System.Drawing.Size(149, 26);
+            this.labelEsoftHospitals.TabIndex = 9;
+            this.labelEsoftHospitals.Text = "Esoft Hospitals";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Image = global::Esoft_Project.Properties.Resources.linear_cross;
+            this.pictureBox1.Location = new System.Drawing.Point(19, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(36, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panelFormContainer
+            // 
+            this.panelFormContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(243)))));
+            this.panelFormContainer.BottomLeftCornerRadius = 50;
+            this.panelFormContainer.BottomRightCornerRadius = 20;
+            this.panelFormContainer.Controls.Add(this.lblCurrent);
+            this.panelFormContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFormContainer.EndColor = System.Drawing.Color.White;
+            this.panelFormContainer.GradientAngle = 0F;
+            this.panelFormContainer.GradientCenter = new System.Drawing.Point(100, 50);
+            this.panelFormContainer.GradientType = Esoft_Project.GradientType.Linear;
+            this.panelFormContainer.Location = new System.Drawing.Point(218, 52);
+            this.panelFormContainer.Name = "panelFormContainer";
+            this.panelFormContainer.Size = new System.Drawing.Size(981, 666);
+            this.panelFormContainer.StartColor = System.Drawing.Color.White;
+            this.panelFormContainer.TabIndex = 0;
+            this.panelFormContainer.TopLeftCornerRadius = 20;
+            this.panelFormContainer.TopRightCornerRadius = 20;
+            this.panelFormContainer.UseGradientFill = false;
+            // 
+            // lblCurrent
+            // 
+            this.lblCurrent.Location = new System.Drawing.Point(38, 21);
+            this.lblCurrent.Name = "lblCurrent";
+            this.lblCurrent.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.lblCurrent.Size = new System.Drawing.Size(130, 41);
+            this.lblCurrent.StateCommon.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.lblCurrent.StateCommon.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.lblCurrent.StateCommon.ShortText.Font = new System.Drawing.Font("Ivy Mode Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrent.TabIndex = 0;
+            this.lblCurrent.Values.Text = "Overview";
+            // 
+            // panelTitle
+            // 
+            this.panelTitle.BottomLeftCornerRadius = 20;
+            this.panelTitle.BottomRightCornerRadius = 20;
+            this.panelTitle.Controls.Add(this.labelTImer);
+            this.panelTitle.Controls.Add(this.bellIcon);
+            this.panelTitle.Controls.Add(this.userIcon);
+            this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitle.EndColor = System.Drawing.Color.White;
+            this.panelTitle.GradientAngle = 0F;
+            this.panelTitle.GradientCenter = new System.Drawing.Point(100, 50);
+            this.panelTitle.GradientType = Esoft_Project.GradientType.Linear;
+            this.panelTitle.Location = new System.Drawing.Point(218, 1);
+            this.panelTitle.Name = "panelTitle";
+            this.panelTitle.Size = new System.Drawing.Size(981, 51);
+            this.panelTitle.StartColor = System.Drawing.Color.White;
+            this.panelTitle.TabIndex = 1;
+            this.panelTitle.TopLeftCornerRadius = 20;
+            this.panelTitle.TopRightCornerRadius = 20;
+            this.panelTitle.UseGradientFill = true;
+            this.panelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitle_MouseDown);
+            // 
+            // labelTImer
+            // 
+            this.labelTImer.Location = new System.Drawing.Point(137, 21);
+            this.labelTImer.Name = "labelTImer";
+            this.labelTImer.Size = new System.Drawing.Size(6, 2);
+            this.labelTImer.StateCommon.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.labelTImer.StateCommon.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.labelTImer.StateCommon.ShortText.Font = new System.Drawing.Font("Ivy Mode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTImer.TabIndex = 2;
+            this.labelTImer.Values.Text = "";
+            // 
+            // bellIcon
+            // 
+            this.bellIcon.BackColor = System.Drawing.Color.Transparent;
+            this.bellIcon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(68)))), ((int)(((byte)(78)))));
+            this.bellIcon.IconChar = FontAwesome.Sharp.IconChar.Bell;
+            this.bellIcon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(68)))), ((int)(((byte)(78)))));
+            this.bellIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bellIcon.IconSize = 25;
+            this.bellIcon.Location = new System.Drawing.Point(899, 13);
+            this.bellIcon.Name = "bellIcon";
+            this.bellIcon.Size = new System.Drawing.Size(32, 32);
+            this.bellIcon.TabIndex = 1;
+            this.bellIcon.TabStop = false;
+            // 
+            // userIcon
+            // 
+            this.userIcon.BackColor = System.Drawing.Color.Transparent;
+            this.userIcon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(68)))), ((int)(((byte)(78)))));
+            this.userIcon.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
+            this.userIcon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(68)))), ((int)(((byte)(78)))));
+            this.userIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.userIcon.IconSize = 25;
+            this.userIcon.Location = new System.Drawing.Point(937, 13);
+            this.userIcon.Name = "userIcon";
+            this.userIcon.Size = new System.Drawing.Size(32, 32);
+            this.userIcon.TabIndex = 0;
+            this.userIcon.TabStop = false;
+            this.userIcon.Click += new System.EventHandler(this.userIcon_Click);
             // 
             // panelContainer7
             // 
@@ -167,9 +298,9 @@
             this.btnBilling.FlatAppearance.BorderSize = 0;
             this.btnBilling.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBilling.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBilling.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnBilling.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnBilling.IconChar = FontAwesome.Sharp.IconChar.Receipt;
-            this.btnBilling.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnBilling.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnBilling.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBilling.IconSize = 25;
             this.btnBilling.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -228,9 +359,9 @@
             this.btnTests.FlatAppearance.BorderSize = 0;
             this.btnTests.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTests.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnTests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnTests.IconChar = FontAwesome.Sharp.IconChar.Flask;
-            this.btnTests.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnTests.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnTests.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnTests.IconSize = 25;
             this.btnTests.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -289,9 +420,9 @@
             this.btnStaff.FlatAppearance.BorderSize = 0;
             this.btnStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStaff.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStaff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnStaff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnStaff.IconChar = FontAwesome.Sharp.IconChar.IdCardAlt;
-            this.btnStaff.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnStaff.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnStaff.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnStaff.IconSize = 25;
             this.btnStaff.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -350,9 +481,9 @@
             this.btnInventory.FlatAppearance.BorderSize = 0;
             this.btnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInventory.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnInventory.IconChar = FontAwesome.Sharp.IconChar.BoxOpen;
-            this.btnInventory.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnInventory.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnInventory.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnInventory.IconSize = 25;
             this.btnInventory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -411,9 +542,9 @@
             this.btnAlerts.FlatAppearance.BorderSize = 0;
             this.btnAlerts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlerts.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlerts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnAlerts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnAlerts.IconChar = FontAwesome.Sharp.IconChar.ExclamationCircle;
-            this.btnAlerts.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnAlerts.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnAlerts.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAlerts.IconSize = 25;
             this.btnAlerts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -446,7 +577,7 @@
             this.panelContainer2.StartColor = System.Drawing.Color.White;
             this.panelContainer2.TabIndex = 5;
             this.panelContainer2.TopLeftCornerRadius = 1;
-            this.panelContainer2.TopRightCornerRadius = 22;
+            this.panelContainer2.TopRightCornerRadius = 1;
             this.panelContainer2.UseGradientFill = true;
             // 
             // btnpanelRecords
@@ -459,7 +590,7 @@
             this.btnpanelRecords.GradientAngle = 0F;
             this.btnpanelRecords.GradientCenter = new System.Drawing.Point(100, 50);
             this.btnpanelRecords.GradientType = Esoft_Project.GradientType.Linear;
-            this.btnpanelRecords.Location = new System.Drawing.Point(4, 4);
+            this.btnpanelRecords.Location = new System.Drawing.Point(4, 5);
             this.btnpanelRecords.Name = "btnpanelRecords";
             this.btnpanelRecords.Size = new System.Drawing.Size(209, 42);
             this.btnpanelRecords.StartColor = System.Drawing.Color.White;
@@ -475,9 +606,9 @@
             this.btnRecords.FlatAppearance.BorderSize = 0;
             this.btnRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecords.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecords.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnRecords.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnRecords.IconChar = FontAwesome.Sharp.IconChar.TableList;
-            this.btnRecords.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.btnRecords.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnRecords.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRecords.IconSize = 25;
             this.btnRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -494,7 +625,7 @@
             // 
             // panelContainer1
             // 
-            this.panelContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
+            this.panelContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(243)))));
             this.panelContainer1.BottomLeftCornerRadius = 1;
             this.panelContainer1.BottomRightCornerRadius = 1;
             this.panelContainer1.Controls.Add(this.btnpanelOverview);
@@ -540,9 +671,9 @@
             this.btnOverview.FlatAppearance.BorderSize = 0;
             this.btnOverview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOverview.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOverview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(67)))), ((int)(((byte)(57)))));
+            this.btnOverview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(68)))), ((int)(((byte)(78)))));
             this.btnOverview.IconChar = FontAwesome.Sharp.IconChar.Globe;
-            this.btnOverview.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(67)))), ((int)(((byte)(57)))));
+            this.btnOverview.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(68)))), ((int)(((byte)(78)))));
             this.btnOverview.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnOverview.IconSize = 25;
             this.btnOverview.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -582,9 +713,9 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(67)))), ((int)(((byte)(57)))));
+            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(68)))), ((int)(((byte)(78)))));
             this.btnClose.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.btnClose.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(67)))), ((int)(((byte)(57)))));
+            this.btnClose.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(68)))), ((int)(((byte)(78)))));
             this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnClose.IconSize = 25;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -598,135 +729,6 @@
             this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // panelLogo
-            // 
-            this.panelLogo.Controls.Add(this.pictureBox1);
-            this.panelLogo.Controls.Add(this.labelEsoftHospitals);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Margin = new System.Windows.Forms.Padding(0);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.panelLogo.Size = new System.Drawing.Size(217, 84);
-            this.panelLogo.StateCommon.Color1 = System.Drawing.Color.White;
-            this.panelLogo.StateCommon.Color2 = System.Drawing.Color.White;
-            this.panelLogo.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Image = global::Esoft_Project.Properties.Resources.linear_cross;
-            this.pictureBox1.Location = new System.Drawing.Point(19, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(36, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
-            // 
-            // labelEsoftHospitals
-            // 
-            this.labelEsoftHospitals.AutoSize = true;
-            this.labelEsoftHospitals.BackColor = System.Drawing.Color.White;
-            this.labelEsoftHospitals.Font = new System.Drawing.Font("Ivy Mode", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEsoftHospitals.Location = new System.Drawing.Point(55, 21);
-            this.labelEsoftHospitals.Name = "labelEsoftHospitals";
-            this.labelEsoftHospitals.Size = new System.Drawing.Size(149, 26);
-            this.labelEsoftHospitals.TabIndex = 9;
-            this.labelEsoftHospitals.Text = "Esoft Hospitals";
-            // 
-            // panelTitle
-            // 
-            this.panelTitle.BottomLeftCornerRadius = 20;
-            this.panelTitle.BottomRightCornerRadius = 20;
-            this.panelTitle.Controls.Add(this.labelTImer);
-            this.panelTitle.Controls.Add(this.bellIcon);
-            this.panelTitle.Controls.Add(this.userIcon);
-            this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitle.EndColor = System.Drawing.Color.White;
-            this.panelTitle.GradientAngle = 0F;
-            this.panelTitle.GradientCenter = new System.Drawing.Point(100, 50);
-            this.panelTitle.GradientType = Esoft_Project.GradientType.Linear;
-            this.panelTitle.Location = new System.Drawing.Point(218, 1);
-            this.panelTitle.Name = "panelTitle";
-            this.panelTitle.Size = new System.Drawing.Size(981, 51);
-            this.panelTitle.StartColor = System.Drawing.Color.White;
-            this.panelTitle.TabIndex = 1;
-            this.panelTitle.TopLeftCornerRadius = 20;
-            this.panelTitle.TopRightCornerRadius = 20;
-            this.panelTitle.UseGradientFill = true;
-            this.panelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitle_MouseDown);
-            // 
-            // labelTImer
-            // 
-            this.labelTImer.Location = new System.Drawing.Point(137, 21);
-            this.labelTImer.Name = "labelTImer";
-            this.labelTImer.Size = new System.Drawing.Size(6, 2);
-            this.labelTImer.StateCommon.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
-            this.labelTImer.StateCommon.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
-            this.labelTImer.StateCommon.ShortText.Font = new System.Drawing.Font("Ivy Mode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTImer.TabIndex = 2;
-            this.labelTImer.Values.Text = "";
-            // 
-            // bellIcon
-            // 
-            this.bellIcon.BackColor = System.Drawing.Color.Transparent;
-            this.bellIcon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(67)))), ((int)(((byte)(57)))));
-            this.bellIcon.IconChar = FontAwesome.Sharp.IconChar.Bell;
-            this.bellIcon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(67)))), ((int)(((byte)(57)))));
-            this.bellIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.bellIcon.IconSize = 25;
-            this.bellIcon.Location = new System.Drawing.Point(899, 13);
-            this.bellIcon.Name = "bellIcon";
-            this.bellIcon.Size = new System.Drawing.Size(32, 32);
-            this.bellIcon.TabIndex = 1;
-            this.bellIcon.TabStop = false;
-            // 
-            // userIcon
-            // 
-            this.userIcon.BackColor = System.Drawing.Color.Transparent;
-            this.userIcon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(67)))), ((int)(((byte)(57)))));
-            this.userIcon.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
-            this.userIcon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(67)))), ((int)(((byte)(57)))));
-            this.userIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.userIcon.IconSize = 25;
-            this.userIcon.Location = new System.Drawing.Point(937, 13);
-            this.userIcon.Name = "userIcon";
-            this.userIcon.Size = new System.Drawing.Size(32, 32);
-            this.userIcon.TabIndex = 0;
-            this.userIcon.TabStop = false;
-            // 
-            // panelFormContainer
-            // 
-            this.panelFormContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.panelFormContainer.BottomLeftCornerRadius = 50;
-            this.panelFormContainer.BottomRightCornerRadius = 20;
-            this.panelFormContainer.Controls.Add(this.lblCurrent);
-            this.panelFormContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFormContainer.EndColor = System.Drawing.Color.White;
-            this.panelFormContainer.GradientAngle = 0F;
-            this.panelFormContainer.GradientCenter = new System.Drawing.Point(100, 50);
-            this.panelFormContainer.GradientType = Esoft_Project.GradientType.Linear;
-            this.panelFormContainer.Location = new System.Drawing.Point(218, 52);
-            this.panelFormContainer.Name = "panelFormContainer";
-            this.panelFormContainer.Size = new System.Drawing.Size(981, 666);
-            this.panelFormContainer.StartColor = System.Drawing.Color.White;
-            this.panelFormContainer.TabIndex = 0;
-            this.panelFormContainer.TopLeftCornerRadius = 20;
-            this.panelFormContainer.TopRightCornerRadius = 20;
-            this.panelFormContainer.UseGradientFill = false;
-            // 
-            // lblCurrent
-            // 
-            this.lblCurrent.Location = new System.Drawing.Point(38, 21);
-            this.lblCurrent.Name = "lblCurrent";
-            this.lblCurrent.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.lblCurrent.Size = new System.Drawing.Size(130, 41);
-            this.lblCurrent.StateCommon.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
-            this.lblCurrent.StateCommon.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
-            this.lblCurrent.StateCommon.ShortText.Font = new System.Drawing.Font("Ivy Mode Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrent.TabIndex = 0;
-            this.lblCurrent.Values.Text = "Overview";
             // 
             // formMain
             // 
@@ -750,6 +752,16 @@
             this.Load += new System.EventHandler(this.formMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelMenu)).EndInit();
             this.panelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelLogo)).EndInit();
+            this.panelLogo.ResumeLayout(false);
+            this.panelLogo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelFormContainer.ResumeLayout(false);
+            this.panelFormContainer.PerformLayout();
+            this.panelTitle.ResumeLayout(false);
+            this.panelTitle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bellIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userIcon)).EndInit();
             this.panelContainer7.ResumeLayout(false);
             this.btnpanelBilling.ResumeLayout(false);
             this.panelContainer6.ResumeLayout(false);
@@ -765,16 +777,6 @@
             this.panelContainer1.ResumeLayout(false);
             this.btnpanelOverview.ResumeLayout(false);
             this.btnPanelClose.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelLogo)).EndInit();
-            this.panelLogo.ResumeLayout(false);
-            this.panelLogo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panelTitle.ResumeLayout(false);
-            this.panelTitle.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bellIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userIcon)).EndInit();
-            this.panelFormContainer.ResumeLayout(false);
-            this.panelFormContainer.PerformLayout();
             this.ResumeLayout(false);
 
         }

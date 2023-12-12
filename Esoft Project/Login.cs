@@ -40,10 +40,10 @@ namespace Esoft_Project
             else
             {
                 MessageBox.Show("Invalid username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPassword.StateCommon.Border.Color1 = Color.Red;
-                txtPassword.StateCommon.Border.Color2 = Color.Red;
-                txtUsername.StateCommon.Border.Color1 = Color.Red;
-                txtUsername.StateCommon.Border.Color2 = Color.Red;
+                txtPassword.StateCommon.Border.Color1 = Color.FromArgb(247, 68, 78);
+                txtPassword.StateCommon.Border.Color2 = Color.FromArgb(247, 68, 78);
+                txtUsername.StateCommon.Border.Color1 = Color.FromArgb(247, 68, 78);
+                txtUsername.StateCommon.Border.Color2 = Color.FromArgb(247, 68, 78);
             }
         }
 

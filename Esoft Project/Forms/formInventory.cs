@@ -16,5 +16,10 @@ namespace Esoft_Project.Forms
         {
             InitializeComponent();
         }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
