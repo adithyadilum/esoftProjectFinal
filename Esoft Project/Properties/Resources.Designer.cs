@@ -73,9 +73,29 @@ namespace Esoft_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Doctor_pana1 {
+            get {
+                object obj = ResourceManager.GetObject("Doctor-pana1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap linear_cross {
             get {
                 object obj = ResourceManager.GetObject("linear-cross", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap linear_cross1 {
+            get {
+                object obj = ResourceManager.GetObject("linear-cross1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

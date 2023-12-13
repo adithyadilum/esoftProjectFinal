@@ -16,5 +16,10 @@ namespace Esoft_Project.Forms
         {
             InitializeComponent();
         }
+
+        private void lblCurrent_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

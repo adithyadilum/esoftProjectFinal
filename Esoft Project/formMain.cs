@@ -41,10 +41,10 @@ namespace Esoft_Project
         }
         private struct RGBColors
         {
-            public static Color color1 = Color.FromArgb(55, 50, 52); 
-            public static Color color2 = Color.FromArgb(232, 220, 204); 
-            public static Color color3 = Color.FromArgb(243, 236, 228); 
-            public static Color color4 = Color.FromArgb(216, 67, 57); 
+            public static Color color1 = Color.FromArgb(0, 44, 62); 
+            public static Color color2 = Color.FromArgb(120, 188, 196); 
+            public static Color color3 = Color.FromArgb(247, 248, 243); 
+            public static Color color4 = Color.FromArgb(247, 68, 78); 
         }
 
   
@@ -85,6 +85,7 @@ namespace Esoft_Project
         }
         private void formMain_Load(object sender, EventArgs e)
         {
+            btnOverview.PerformClick();
         }
 
         private void OpenChildForm(Form childForm)
@@ -165,6 +166,18 @@ namespace Esoft_Project
             if (result == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+        }
+
+        private void userIcon_Click(object sender, EventArgs e)
+        {
+            SystemSounds.Exclamation.Play();
+            DialogResult result = MessageBox.Show("Are you sure you want to Logout?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+                formLogin obj = new formLogin();
+                obj.Show();
             }
         }
     }
