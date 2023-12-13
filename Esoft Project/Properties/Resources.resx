@@ -121,13 +121,16 @@
   <data name="xmark-solid" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\xmark-solid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Doctor-pana1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Doctor-pana1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="linear-cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\linear-cross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Doctor-pana" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Doctor-pana.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Doctor-pana1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Doctor-pana1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="linear-cross1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\linear-cross1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
