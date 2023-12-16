@@ -14,7 +14,7 @@ namespace Esoft_Project
 {
     public partial class formLogin : KryptonForm
     {
-        private const string ConnectionString = "Data Source=Vostro3760;Initial Catalog=HMSdb;Integrated Security=True";
+        private const string ConnectionString = "Data Source=ROG-STRIX-G15;Initial Catalog=HMSdb;Integrated Security=True;";
         public formLogin()
         {
             InitializeComponent();

@@ -630,13 +630,14 @@
             // 
             // formEmergency
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(243)))));
             this.ClientSize = new System.Drawing.Size(980, 664);
             this.Controls.Add(this.customPanel1);
             this.Name = "formEmergency";
             this.Text = "formEmergency";
+            this.Load += new System.EventHandler(this.formEmergency_Load);
             this.customPanel1.ResumeLayout(false);
             this.customPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox3)).EndInit();

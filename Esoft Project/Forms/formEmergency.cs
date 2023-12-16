@@ -16,5 +16,11 @@ namespace Esoft_Project.Forms
         {
             InitializeComponent();
         }
+
+        private void formEmergency_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
