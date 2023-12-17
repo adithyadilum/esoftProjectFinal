@@ -756,6 +756,7 @@
             this.btnUpdate.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
             this.btnUpdate.TabIndex = 28;
             this.btnUpdate.Values.Text = "Update User";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 

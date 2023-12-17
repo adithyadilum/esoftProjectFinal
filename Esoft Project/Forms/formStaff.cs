@@ -314,5 +314,65 @@ namespace Esoft_Project.Forms
                 sqlConnection.Close();
             }
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string selectedEmpID = ComboBoxEmpID.SelectedItem?.ToString();
+
+            // Ensure a value is selected
+            if (string.IsNullOrEmpty(selectedEmpID))
+            {
+                MessageBox.Show("Please select a patient to update.");
+                return;
+            }
+
+            try
+            {
+                sqlConnection.Open();
+
+                // Update the existing record in the Users table
+                string updateQuery = "UPDATE Users SET Name = @Name, isMale = @IsMale, DateOfBirth = @DateOfBirth, MaritalStatus = @MaritalStatus, " +
+                                     "NICno = @NICno, Language = @Language, AddressLine1 = @AddressLine1, AddressLine2 = @AddressLine2, Phone = @Phone, " +
+                                     "Email = @Email, JobTitle = @JobTitle, Department = @Department, Username = @Username, Password = @Password " +
+                                     "WHERE PatientID = @PatientID";
+
+                SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
+
+                // Set parameters for the update
+                updateCommand.Parameters.AddWithValue("@Name", txtName.Text);
+                updateCommand.Parameters.AddWithValue("@IsMale", rbtnMale.Checked);
+                updateCommand.Parameters.AddWithValue("@DateOfBirth", DateTimeDob.Value);
+                updateCommand.Parameters.AddWithValue("@MaritalStatus", comboBoxMarital.Text);
+                updateCommand.Parameters.AddWithValue("@NICno", txtNic.Text);
+                updateCommand.Parameters.AddWithValue("@Language", comboBoxLanguage.Text);
+                updateCommand.Parameters.AddWithValue("@AddressLine1", txtAddressLine1.Text);
+                updateCommand.Parameters.AddWithValue("@AddressLine2", txtAddressLine2.Text);
+                updateCommand.Parameters.AddWithValue("@Phone", txtPhone.Text);
+                updateCommand.Parameters.AddWithValue("@Email", txtEmail.Text);
+                updateCommand.Parameters.AddWithValue("@JobTitle", txtJobTitle.Text);
+                updateCommand.Parameters.AddWithValue("@Department", comboboxDepartment.Text);
+                updateCommand.Parameters.AddWithValue("@Username", txtUsername.Text);
+                updateCommand.Parameters.AddWithValue("@Password", txtPassword.Text);
+
+                int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Update successful! Record updated in Users.");
+                }
+                else
+                {
+                    MessageBox.Show("Update failed. Please check your input or select a valid User.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating User: " + ex.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+        }
     }
 }

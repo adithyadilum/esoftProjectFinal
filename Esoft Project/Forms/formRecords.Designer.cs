@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.customPanel1 = new Esoft_Project.CustomPanel();
-            this.btnView = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.comboboxPatientID = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.btnClear = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.txtNotes = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.ComboBoxLabTests = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.ComboBoxCondition = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
@@ -41,8 +42,7 @@
             this.txtHeartRate = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtBP = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtTemp = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.txtDepartment = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.txtPatientID = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.comboboxDepartment = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.txtEmergencyPhn = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtEmail = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtPhone = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -82,9 +82,10 @@
             this.lblHeartrate = new System.Windows.Forms.Label();
             this.lblBloodpressure = new System.Windows.Forms.Label();
             this.customPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboboxPatientID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxLabTests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxCondition)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDepartment)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboboxDepartment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxLanguage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxMarital)).BeginInit();
             this.SuspendLayout();
@@ -94,7 +95,8 @@
             this.customPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(243)))));
             this.customPanel1.BottomLeftCornerRadius = 20;
             this.customPanel1.BottomRightCornerRadius = 20;
-            this.customPanel1.Controls.Add(this.btnView);
+            this.customPanel1.Controls.Add(this.comboboxPatientID);
+            this.customPanel1.Controls.Add(this.btnClear);
             this.customPanel1.Controls.Add(this.txtNotes);
             this.customPanel1.Controls.Add(this.ComboBoxLabTests);
             this.customPanel1.Controls.Add(this.ComboBoxCondition);
@@ -106,8 +108,7 @@
             this.customPanel1.Controls.Add(this.txtHeartRate);
             this.customPanel1.Controls.Add(this.txtBP);
             this.customPanel1.Controls.Add(this.txtTemp);
-            this.customPanel1.Controls.Add(this.txtDepartment);
-            this.customPanel1.Controls.Add(this.txtPatientID);
+            this.customPanel1.Controls.Add(this.comboboxDepartment);
             this.customPanel1.Controls.Add(this.txtEmergencyPhn);
             this.customPanel1.Controls.Add(this.txtEmail);
             this.customPanel1.Controls.Add(this.txtPhone);
@@ -159,42 +160,72 @@
             this.customPanel1.TopRightCornerRadius = 20;
             this.customPanel1.UseGradientFill = true;
             // 
-            // btnView
+            // comboboxPatientID
             // 
-            this.btnView.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnView.Location = new System.Drawing.Point(629, 528);
-            this.btnView.Name = "btnView";
-            this.btnView.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnView.Size = new System.Drawing.Size(151, 42);
-            this.btnView.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
-            this.btnView.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
-            this.btnView.StateCommon.Border.Color1 = System.Drawing.Color.White;
-            this.btnView.StateCommon.Border.Color2 = System.Drawing.Color.White;
-            this.btnView.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.comboboxPatientID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboboxPatientID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboboxPatientID.DropButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ButtonSpec;
+            this.comboboxPatientID.DropDownWidth = 117;
+            this.comboboxPatientID.Location = new System.Drawing.Point(200, 87);
+            this.comboboxPatientID.MaxDropDownItems = 4;
+            this.comboboxPatientID.Name = "comboboxPatientID";
+            this.comboboxPatientID.Size = new System.Drawing.Size(126, 28);
+            this.comboboxPatientID.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(243)))));
+            this.comboboxPatientID.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(188)))), ((int)(((byte)(196)))));
+            this.comboboxPatientID.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(188)))), ((int)(((byte)(196)))));
+            this.comboboxPatientID.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnView.StateCommon.Border.Rounding = 20;
-            this.btnView.StateCommon.Border.Width = 1;
-            this.btnView.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnView.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnView.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnView.StateDisabled.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
-            this.btnView.StateDisabled.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
-            this.btnView.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
-            this.btnView.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
-            this.btnView.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
-            this.btnView.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
-            this.btnView.StateTracking.Back.Color1 = System.Drawing.Color.White;
-            this.btnView.StateTracking.Back.Color2 = System.Drawing.Color.White;
-            this.btnView.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
-            this.btnView.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
-            this.btnView.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.comboboxPatientID.StateCommon.ComboBox.Border.Rounding = 5;
+            this.comboboxPatientID.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.comboboxPatientID.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboboxPatientID.StateCommon.DropBack.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(243)))));
+            this.comboboxPatientID.StateCommon.DropBack.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(243)))));
+            this.comboboxPatientID.StateCommon.Item.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(243)))));
+            this.comboboxPatientID.StateCommon.Item.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(243)))));
+            this.comboboxPatientID.StateCommon.Item.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.comboboxPatientID.StateCommon.Item.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.comboboxPatientID.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboboxPatientID.TabIndex = 64;
+            this.comboboxPatientID.SelectedIndexChanged += new System.EventHandler(this.comboboxPatientID_SelectedIndexChanged);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClear.Location = new System.Drawing.Point(629, 528);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnClear.Size = new System.Drawing.Size(151, 42);
+            this.btnClear.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.btnClear.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.btnClear.StateCommon.Border.Color1 = System.Drawing.Color.White;
+            this.btnClear.StateCommon.Border.Color2 = System.Drawing.Color.White;
+            this.btnClear.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnView.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
-            this.btnView.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
-            this.btnView.TabIndex = 52;
-            this.btnView.Values.Text = "Search";
+            this.btnClear.StateCommon.Border.Rounding = 20;
+            this.btnClear.StateCommon.Border.Width = 1;
+            this.btnClear.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnClear.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnClear.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.StateDisabled.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.btnClear.StateDisabled.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.btnClear.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.btnClear.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.btnClear.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.btnClear.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.btnClear.StateTracking.Back.Color1 = System.Drawing.Color.White;
+            this.btnClear.StateTracking.Back.Color2 = System.Drawing.Color.White;
+            this.btnClear.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.btnClear.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.btnClear.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnClear.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.btnClear.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.btnClear.TabIndex = 52;
+            this.btnClear.Values.Text = "Clear";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtNotes
             // 
@@ -425,60 +456,33 @@
             this.txtTemp.TabIndex = 44;
             this.txtTemp.WordWrap = false;
             // 
-            // txtDepartment
+            // comboboxDepartment
             // 
-            this.txtDepartment.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtDepartment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.txtDepartment.DropButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ButtonSpec;
-            this.txtDepartment.DropDownWidth = 117;
-            this.txtDepartment.Items.AddRange(new object[] {
-            "Sinhala",
-            "Tamil",
-            "English",
-            "Other"});
-            this.txtDepartment.Location = new System.Drawing.Point(200, 121);
-            this.txtDepartment.MaxDropDownItems = 4;
-            this.txtDepartment.Name = "txtDepartment";
-            this.txtDepartment.Size = new System.Drawing.Size(172, 28);
-            this.txtDepartment.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(243)))));
-            this.txtDepartment.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(188)))), ((int)(((byte)(196)))));
-            this.txtDepartment.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(188)))), ((int)(((byte)(196)))));
-            this.txtDepartment.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.comboboxDepartment.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboboxDepartment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboboxDepartment.DropButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ButtonSpec;
+            this.comboboxDepartment.DropDownWidth = 117;
+            this.comboboxDepartment.Location = new System.Drawing.Point(200, 121);
+            this.comboboxDepartment.MaxDropDownItems = 4;
+            this.comboboxDepartment.Name = "comboboxDepartment";
+            this.comboboxDepartment.Size = new System.Drawing.Size(172, 28);
+            this.comboboxDepartment.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(243)))));
+            this.comboboxDepartment.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(188)))), ((int)(((byte)(196)))));
+            this.comboboxDepartment.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(188)))), ((int)(((byte)(196)))));
+            this.comboboxDepartment.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.txtDepartment.StateCommon.ComboBox.Border.Rounding = 5;
-            this.txtDepartment.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
-            this.txtDepartment.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDepartment.StateCommon.DropBack.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.txtDepartment.StateCommon.DropBack.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.txtDepartment.StateCommon.Item.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.txtDepartment.StateCommon.Item.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
-            this.txtDepartment.StateCommon.Item.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
-            this.txtDepartment.StateCommon.Item.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
-            this.txtDepartment.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDepartment.TabIndex = 43;
-            // 
-            // txtPatientID
-            // 
-            this.txtPatientID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPatientID.Location = new System.Drawing.Point(200, 89);
-            this.txtPatientID.MaxLength = 10;
-            this.txtPatientID.Name = "txtPatientID";
-            this.txtPatientID.Size = new System.Drawing.Size(90, 25);
-            this.txtPatientID.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(243)))));
-            this.txtPatientID.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(188)))), ((int)(((byte)(196)))));
-            this.txtPatientID.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(188)))), ((int)(((byte)(196)))));
-            this.txtPatientID.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.txtPatientID.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.txtPatientID.StateCommon.Border.Rounding = 5;
-            this.txtPatientID.StateCommon.Border.Width = 1;
-            this.txtPatientID.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPatientID.StateCommon.Content.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPatientID.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.txtPatientID.TabIndex = 42;
-            this.txtPatientID.WordWrap = false;
+            this.comboboxDepartment.StateCommon.ComboBox.Border.Rounding = 5;
+            this.comboboxDepartment.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.comboboxDepartment.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboboxDepartment.StateCommon.DropBack.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
+            this.comboboxDepartment.StateCommon.DropBack.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
+            this.comboboxDepartment.StateCommon.Item.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
+            this.comboboxDepartment.StateCommon.Item.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(236)))), ((int)(((byte)(228)))));
+            this.comboboxDepartment.StateCommon.Item.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.comboboxDepartment.StateCommon.Item.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(50)))), ((int)(((byte)(52)))));
+            this.comboboxDepartment.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboboxDepartment.TabIndex = 43;
             // 
             // txtEmergencyPhn
             // 
@@ -910,6 +914,7 @@
             this.btnRegister.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnRegister.TabIndex = 27;
             this.btnRegister.Values.Text = "Register";
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // lblAddress
             // 
@@ -970,6 +975,7 @@
             this.btnUpdate.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnUpdate.TabIndex = 28;
             this.btnUpdate.Values.Text = "Update";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // lblVitalSigns
             // 
@@ -1019,6 +1025,7 @@
             this.btnDelete.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnDelete.TabIndex = 29;
             this.btnDelete.Values.Text = "Discharge";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // lblCurrent
             // 
@@ -1031,7 +1038,6 @@
             this.lblCurrent.StateCommon.ShortText.Font = new System.Drawing.Font("Ivy Mode", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrent.TabIndex = 1;
             this.lblCurrent.Values.Text = "Patient Information";
-            this.lblCurrent.Paint += new System.Windows.Forms.PaintEventHandler(this.lblCurrent_Paint);
             // 
             // lblPersonalInformation
             // 
@@ -1111,11 +1117,13 @@
             this.Controls.Add(this.customPanel1);
             this.Name = "formRecords";
             this.Text = "formRecords";
+            this.Load += new System.EventHandler(this.formRecords_Load);
             this.customPanel1.ResumeLayout(false);
             this.customPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboboxPatientID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxLabTests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxCondition)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDepartment)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboboxDepartment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxLanguage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxMarital)).EndInit();
             this.ResumeLayout(false);
@@ -1166,8 +1174,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtAddressLine1;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtEmergencyPhn;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtEmail;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox txtDepartment;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPatientID;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox comboboxDepartment;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtHeight;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtWeight;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtHeartRate;
@@ -1176,6 +1183,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNotes;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox ComboBoxLabTests;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox ComboBoxCondition;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnView;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnClear;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox comboboxPatientID;
     }
 }
