@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace Esoft_Project.Forms
@@ -416,7 +409,6 @@ namespace Esoft_Project.Forms
 
         private void HandleTestTypeSelection()
         {
-            // Your logic for comboboxTestType selection
             if (comboboxTestType.SelectedItem == null)
             {
                 return;
@@ -461,13 +453,6 @@ namespace Esoft_Project.Forms
             }
         }
 
-
-        private void comboboxReportCode_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-
         private string GetString(SqlDataReader reader, string columnName)
         {
             try
@@ -510,39 +495,11 @@ namespace Esoft_Project.Forms
             return string.Empty;
         }
 
-
-
-
-        // Helper method to get boolean value from SqlDataReader
-        private bool GetBoolean(SqlDataReader reader, string columnName)
-        {
-            int columnIndex = reader.GetOrdinal(columnName);
-            return reader.IsDBNull(columnIndex) ? false : reader.GetBoolean(columnIndex);
-        }
-
         // Helper method to get DateTime value from SqlDataReader
         private DateTime GetDateTime(SqlDataReader reader, string columnName)
         {
             int columnIndex = reader.GetOrdinal(columnName);
             return reader.IsDBNull(columnIndex) ? DateTime.MinValue : reader.GetDateTime(columnIndex);
-        }
-
-        private void comboboxPatientID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-
-
-        private void ComboBoxEmpID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-
-        private void comboboxTestType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
         }
 
         private bool IsReportCodeValid(string reportCode)
