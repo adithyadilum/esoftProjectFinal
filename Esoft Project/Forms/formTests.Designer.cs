@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.PrintDialog = new System.Windows.Forms.PrintDialog();
             this.customPanel1 = new Esoft_Project.CustomPanel();
             this.comboboxTestType = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -63,7 +64,6 @@
             this.lblCurrent = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.lblPersonalInformation = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.lblIdentificationInformation = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.PrintDialog = new System.Windows.Forms.PrintDialog();
             this.customPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboboxTestType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboboxReportCode)).BeginInit();
@@ -72,6 +72,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxBilling)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxPriority)).BeginInit();
             this.SuspendLayout();
+            // 
+            // PrintDialog
+            // 
+            this.PrintDialog.UseEXDialog = true;
             // 
             // customPanel1
             // 
@@ -152,7 +156,7 @@
             this.comboboxTestType.StateCommon.Item.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.comboboxTestType.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboboxTestType.TabIndex = 78;
-            this.comboboxTestType.SelectedIndexChanged += new System.EventHandler(this.comboboxTestType_SelectedIndexChanged);
+            this.comboboxTestType.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             // 
             // kryptonLabel3
             // 
@@ -283,7 +287,7 @@
             this.comboboxReportCode.StateCommon.Item.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.comboboxReportCode.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboboxReportCode.TabIndex = 68;
-            this.comboboxReportCode.SelectedIndexChanged += new System.EventHandler(this.comboboxReportCode_SelectedIndexChanged);
+            this.comboboxReportCode.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -368,7 +372,7 @@
             this.comboboxPatientID.StateCommon.Item.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.comboboxPatientID.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboboxPatientID.TabIndex = 63;
-            this.comboboxPatientID.SelectedIndexChanged += new System.EventHandler(this.comboboxPatientID_SelectedIndexChanged);
+            this.comboboxPatientID.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -408,7 +412,7 @@
             this.ComboBoxEmpID.StateCommon.Item.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.ComboBoxEmpID.StateCommon.Item.Content.ShortText.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ComboBoxEmpID.TabIndex = 53;
-            this.ComboBoxEmpID.SelectedIndexChanged += new System.EventHandler(this.ComboBoxEmpID_SelectedIndexChanged);
+            this.ComboBoxEmpID.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             // 
             // btnUpdateStatus
             // 
@@ -733,10 +737,6 @@
             this.lblIdentificationInformation.StateCommon.ShortText.Font = new System.Drawing.Font("Ivy Mode", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIdentificationInformation.TabIndex = 20;
             this.lblIdentificationInformation.Values.Text = "Patient Information:";
-            // 
-            // PrintDialog
-            // 
-            this.PrintDialog.UseEXDialog = true;
             // 
             // formTests
             // 

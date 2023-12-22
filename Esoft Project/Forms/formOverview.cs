@@ -10,13 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
-
 namespace Esoft_Project.Forms
 {
     public partial class formOverview : Form
     {
         private string connectionString = "Data Source=ROG-STRIX-G15;Initial Catalog=HMSdb;Integrated Security=True;Encrypt=True; TrustServerCertificate=true;";
-
 
         public formOverview()
         {
@@ -32,28 +30,24 @@ namespace Esoft_Project.Forms
 
         private void InitializeDonutChart()
         {
-            // Assuming you have a chart control named 'donutChart' on your form
-            // You can set properties like chart type, title, etc.
-            // Example:
             donutChart.Series.Clear();
             donutChart.Series.Add("PatientRecords");
-            donutChart.Series["PatientRecords"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            donutChart.Series["PatientRecords"].ChartType = SeriesChartType.Doughnut;
             donutChart.Series["PatientRecords"].Points.Add(0); // Placeholder value, will be updated later
             donutChart.Series["PatientRecords"].Points.Add(0); // Placeholder value, will be updated later
 
             // Set colors
-            donutChart.Series["PatientRecords"].Points[0].Color = System.Drawing.Color.FromArgb(0, 44, 62);
-            donutChart.Series["PatientRecords"].Points[1].Color = System.Drawing.Color.FromArgb(247, 68, 78);
+            donutChart.Series["PatientRecords"].Points[0].Color = Color.FromArgb(0, 44, 62);
+            donutChart.Series["PatientRecords"].Points[1].Color = Color.FromArgb(247, 68, 78);
             donutChart.Series["PatientRecords"].Points[1].Label = "Available";
             donutChart.Series["PatientRecords"].Points[0].Label = "Occupied";
-            donutChart.Series["PatientRecords"].Points[1].LabelForeColor = System.Drawing.Color.White;
-            donutChart.Series["PatientRecords"].Points[0].LabelForeColor = System.Drawing.Color.White;
+            donutChart.Series["PatientRecords"].Points[1].LabelForeColor = Color.White;
+            donutChart.Series["PatientRecords"].Points[0].LabelForeColor = Color.White;
             donutChart.Series["PatientRecords"].Font = new Font("Century Gothic", 8, FontStyle.Bold);
         }
+
         private void InitializeBarChart()
         {
-            // Assuming you have a chart control named 'barChart' on your form
-            // Example:
             barChart.Series.Clear();
             barChart.Series.Add("GenderDistribution");
             barChart.Series["GenderDistribution"].ChartType = SeriesChartType.Bar;
@@ -63,21 +57,20 @@ namespace Esoft_Project.Forms
             barChart.Series["GenderDistribution"].Points.Add(0); // Placeholder value, will be updated later
 
             // Set bar colors
-            barChart.Series["GenderDistribution"].Points[0].Color = System.Drawing.Color.FromArgb(247, 68, 78); // Male
-            barChart.Series["GenderDistribution"].Points[1].Color = System.Drawing.Color.FromArgb(247, 68, 78); // Female
+            barChart.Series["GenderDistribution"].Points[0].Color = Color.FromArgb(247, 68, 78); // Male
+            barChart.Series["GenderDistribution"].Points[1].Color = Color.FromArgb(247, 68, 78); // Female
 
             // Set label font for the bar chart
-            barChart.Series["GenderDistribution"].Font = new System.Drawing.Font("Century Gothic", 9, FontStyle.Bold);
+            barChart.Series["GenderDistribution"].Font = new Font("Century Gothic", 9, FontStyle.Bold);
 
             // Add data points
             barChart.Series["GenderDistribution"].Points.AddXY("Male", 0);
             barChart.Series["GenderDistribution"].Points.AddXY("Female", 0);
 
             // Set axis label font
-            barChart.ChartAreas[0].AxisX.LabelStyle.Font = new System.Drawing.Font("Century Gothic", 9, FontStyle.Regular);
-            barChart.ChartAreas[0].AxisY.LabelStyle.Font = new System.Drawing.Font("Century Gothic", 9, FontStyle.Regular);
+            barChart.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Century Gothic", 9, FontStyle.Regular);
+            barChart.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Century Gothic", 9, FontStyle.Regular);
         }
-
 
         private void UpdateCharts()
         {
@@ -87,6 +80,7 @@ namespace Esoft_Project.Forms
             // Update the bar chart
             UpdateBarChart();
         }
+
         private void UpdateDonutChart()
         {
             // Step 1: Connect to the SQL database and retrieve the number of records
@@ -99,6 +93,7 @@ namespace Esoft_Project.Forms
             donutChart.Series["PatientRecords"].Points[0].YValues[0] = percentage;
             donutChart.Series["PatientRecords"].Points[1].YValues[0] = 100 - percentage;
         }
+
         private void UpdateBarChart()
         {
             // Connect to the SQL database and retrieve male and female counts
@@ -113,8 +108,6 @@ namespace Esoft_Project.Forms
             barChart.Series["GenderDistribution"].Points.AddXY("Female", femaleCount);
         }
 
-
-
         private int GetGenderCount(int genderValue)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -128,6 +121,7 @@ namespace Esoft_Project.Forms
                 }
             }
         }
+
         private int GetNumberOfRecords()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

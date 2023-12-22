@@ -16,6 +16,7 @@ namespace Esoft_Project.Forms
     public partial class formTests : Form
     {
         SqlConnection sqlConnection = new SqlConnection("Data Source=ROG-STRIX-G15;Initial Catalog=HMSdb;Integrated Security=True;Encrypt=True; TrustServerCertificate=true;");
+        string connectionString = "Data Source=ROG-STRIX-G15;Initial Catalog=HMSdb;Integrated Security=True;Encrypt=True; TrustServerCertificate=true;";
         public formTests()
         {
             InitializeComponent();
@@ -113,60 +114,182 @@ namespace Esoft_Project.Forms
                 sqlConnection.Close();
             }
         }
+        private bool isHandlingSelection = false;
 
-        private void comboboxReportCode_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (isHandlingSelection)
+            {
+                // Another selection is already being handled, exit to avoid conflicts
+                return;
+            }
 
+            isHandlingSelection = true;
+
+            try
+            {
+                ComponentFactory.Krypton.Toolkit.KryptonComboBox comboBox = (ComponentFactory.Krypton.Toolkit.KryptonComboBox)sender;
+
+                switch (comboBox.Name)
+                {
+                    case "comboboxReportCode":
+                        HandleReportCodeSelection();
+                        break;
+
+                    case "comboboxPatientID":
+                        HandlePatientIDSelection();
+                        break;
+
+                    case "ComboBoxEmpID":
+                        HandleEmpIDSelection();
+                        break;
+
+                    case "comboboxTestType":
+                        HandleTestTypeSelection();
+                        break;
+
+                    // Add more cases for other ComboBoxes if needed
+
+                    default:
+                        // Handle unexpected case
+                        break;
+                }
+            }
+            finally
+            {
+                isHandlingSelection = false;
+            }
+        }
+
+        private void HandleReportCodeSelection()
+        {
+            // Your logic for comboboxReportCode selection
             if (comboboxReportCode.SelectedItem == null)
             {
                 return;
             }
 
-            string selectedValue = comboboxReportCode.SelectedItem.ToString();
+            string selectedReportCode = comboboxReportCode.SelectedItem.ToString();
 
             try
             {
+                // Open the connection only once for the entire method
                 sqlConnection.Open();
 
-                // Retrieve user data based on the selected comboboxAlertID
-                string query = "SELECT Date empID PatientID PriorityLevel TestType BillingStatus Status FROM Reports WHERE ReportCode = @SelectedValue";
-                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@SelectedValue", selectedValue);
-
-                SqlDataReader reader = sqlCommand.ExecuteReader();
-
-                if (reader.Read())
+                // Retrieve data based on the selected ReportCode
+                string query = "SELECT Date, empID, PatientID, PriorityLevel, TestType, BillingStatus, Status " +
+                               "FROM Reports WHERE ReportCode = @SelectedReportCode";
+                using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
                 {
-                    // Populate the form controls with the retrieved data
-                    ComboBoxEmpID.SelectedItem = GetString(reader, "empID");
-                    comboboxPatientID.SelectedItem = GetString(reader, "PatientID");
-                    comboboxTestType.SelectedItem = GetString(reader, "TestType");
-                    comboBoxPriority.SelectedItem = GetString(reader, "PriorityLevel");
-                    comboBoxBilling.SelectedItem = GetString(reader, "BillingStatus");
-                    DatePicker.Value = GetDateTime(reader, "Date");
-                    if (GetString(reader, "Status") == "Requested")
+                    sqlCommand.Parameters.AddWithValue("@SelectedReportCode", selectedReportCode);
+
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
-                        rbtnRequested.Checked = true;
-                        rbtnInProgress.Checked = false;
-                        rbtnCompleted.Checked = false;
+                        if (reader.Read())
+                        {
+                            // Auto-fill other ComboBoxes and TextBoxes with the retrieved data
+                            DatePicker.Value = GetDateTime(reader, "Date");
+                            ComboBoxEmpID.SelectedItem = GetString(reader, "empID");
+                            comboboxPatientID.SelectedItem = GetString(reader, "PatientID");
+                            comboBoxPriority.SelectedItem = GetString(reader, "PriorityLevel");
+                            comboboxTestType.SelectedItem = GetString(reader, "TestType");
+                            comboBoxBilling.SelectedItem = GetString(reader, "BillingStatus");
+
+                            // Set radio button based on the Status
+                            string status = GetString(reader, "Status");
+                            rbtnRequested.Checked = status == "Requested";
+                            rbtnInProgress.Checked = status == "InProgress";
+                            rbtnCompleted.Checked = status == "Completed";
+                        }
+                        else
+                        {
+                            // Clear other ComboBoxes and TextBoxes if no data is found for the selected ReportCode
+                            DatePicker.Value = DateTime.Now; // Set a default value for the date, you can change it accordingly
+                            ComboBoxEmpID.SelectedItem = null;
+                            comboboxPatientID.SelectedItem = null;
+                            comboBoxPriority.SelectedItem = null;
+                            comboboxTestType.SelectedItem = null;
+                            comboBoxBilling.SelectedItem = null;
+
+                            // Clear radio button selection
+                            rbtnRequested.Checked = false;
+                            rbtnInProgress.Checked = false;
+                            rbtnCompleted.Checked = false;
+                        }
                     }
-                    else if (GetString(reader, "Status") == "InProgress")
-                    {
-                        rbtnRequested.Checked = false;
-                        rbtnInProgress.Checked = false;
-                        rbtnCompleted.Checked = true;
-                    }
-                    else
-                    {
-                        rbtnRequested.Checked = false;
-                        rbtnInProgress.Checked = true;
-                        rbtnCompleted.Checked = false;
-                    }
-                    MessageBox.Show("Data loaded successfully!");
                 }
-                else
+                // Retrieve data from MedicalTests based on TestType
+                string testType = comboboxTestType.SelectedItem.ToString();
+                string medicalTestsQuery = "SELECT Description, Cost FROM MedicalTests WHERE TestType = @TestType";
+                using (SqlCommand medicalTestsCommand = new SqlCommand(medicalTestsQuery, sqlConnection))
                 {
-                    MessageBox.Show("No data found for the selected Report Code!");
+                    medicalTestsCommand.Parameters.AddWithValue("@TestType", testType);
+
+                    using (SqlDataReader medicalTestsReader = medicalTestsCommand.ExecuteReader())
+                    {
+                        if (medicalTestsReader.Read())
+                        {
+                            // Auto-fill txtDescription and txtCost with data from MedicalTests
+                            txtDescription.Text = GetString(medicalTestsReader, "Description");
+                            txtCost.Text = GetString(medicalTestsReader, "Cost");
+                        }
+                        else
+                        {
+                            // Clear txtDescription and txtCost if no data is found for the selected TestType
+                            txtDescription.Text = "";
+                            txtCost.Text = "";
+                        }
+                    }
+                }
+
+                // Retrieve data from PatientRecords based on PatientID
+                if (comboboxPatientID.SelectedItem != null)
+                {
+                    string selectedPatientID = comboboxPatientID.SelectedItem.ToString();
+                    string patientQuery = "SELECT Name FROM PatientRecords WHERE PatientID = @SelectedPatientID";
+                    using (SqlCommand patientCommand = new SqlCommand(patientQuery, sqlConnection))
+                    {
+                        patientCommand.Parameters.AddWithValue("@SelectedPatientID", selectedPatientID);
+
+                        using (SqlDataReader patientReader = patientCommand.ExecuteReader())
+                        {
+                            if (patientReader.Read())
+                            {
+                                // Auto-fill txtName with data from PatientRecords
+                                txtName.Text = GetString(patientReader, "Name");
+                            }
+                            else
+                            {
+                                // Clear txtName if no data is found for the selected PatientID
+                                txtName.Text = "";
+                            }
+                        }
+                    }
+                }
+
+                // Retrieve data from Users based on empID
+                if (ComboBoxEmpID.SelectedItem != null)
+                {
+                    string selectedEmpID = ComboBoxEmpID.SelectedItem.ToString();
+                    string userQuery = "SELECT Name FROM Users WHERE empID = @SelectedEmpID";
+                    using (SqlCommand userCommand = new SqlCommand(userQuery, sqlConnection))
+                    {
+                        userCommand.Parameters.AddWithValue("@SelectedEmpID", selectedEmpID);
+
+                        using (SqlDataReader userReader = userCommand.ExecuteReader())
+                        {
+                            if (userReader.Read())
+                            {
+                                // Auto-fill txtempName with data from Users
+                                txtempName.Text = GetString(userReader, "Name");
+                            }
+                            else
+                            {
+                                // Clear txtempName if no data is found for the selected empID
+                                txtempName.Text = "";
+                            }
+                        }
+                    }
                 }
             }
             catch (SqlException ex)
@@ -175,69 +298,19 @@ namespace Esoft_Project.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error retrieving additional data: {ex.Message}\n{ex.StackTrace}");
+                MessageBox.Show($"Error retrieving report data: {ex.Message}\n{ex.StackTrace}");
             }
             finally
             {
+                // Close the connection only once at the end of the method
                 sqlConnection.Close();
             }
         }
-        private string GetString(SqlDataReader reader, string columnName)
+
+
+        private void HandlePatientIDSelection()
         {
-            try
-            {
-                int columnIndex;
-                try
-                {
-                    columnIndex = reader.GetOrdinal(columnName);
-                }
-                catch (IndexOutOfRangeException)
-                {
-                    // Handle the case where the column is not present in the result set
-                    MessageBox.Show($"Column not found: {columnName}");
-                    return string.Empty;
-                }
-
-                if (!reader.IsDBNull(columnIndex))
-                {
-                    if (reader.GetFieldType(columnIndex) == typeof(bool))
-                    {
-                        return reader.GetBoolean(columnIndex).ToString();
-                    }
-                    else if (reader.GetFieldType(columnIndex) == typeof(decimal))
-                    {
-                        return reader.GetDecimal(columnIndex).ToString();
-                    }
-
-                    return reader.GetString(columnIndex);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error retrieving data for column {columnName}: {ex.Message}\n{ex.StackTrace}");
-            }
-
-            return string.Empty;
-        }
-
-
-
-        // Helper method to get boolean value from SqlDataReader
-        private bool GetBoolean(SqlDataReader reader, string columnName)
-        {
-            int columnIndex = reader.GetOrdinal(columnName);
-            return reader.IsDBNull(columnIndex) ? false : reader.GetBoolean(columnIndex);
-        }
-
-        // Helper method to get DateTime value from SqlDataReader
-        private DateTime GetDateTime(SqlDataReader reader, string columnName)
-        {
-            int columnIndex = reader.GetOrdinal(columnName);
-            return reader.IsDBNull(columnIndex) ? DateTime.MinValue : reader.GetDateTime(columnIndex);
-        }
-
-        private void comboboxPatientID_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            // Your logic for comboboxPatientID selection
             if (comboboxPatientID.SelectedItem == null)
             {
                 return;
@@ -247,24 +320,31 @@ namespace Esoft_Project.Forms
 
             try
             {
-                sqlConnection.Open();
+                // Check if the connection is already open before trying to open it
+                if (sqlConnection.State != ConnectionState.Open)
+                {
+                    sqlConnection.Open();
+                }
 
                 // Retrieve patient data based on the selected PatientID
                 string query = "SELECT Name FROM PatientRecords WHERE PatientID = @SelectedPatientID";
-                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@SelectedPatientID", selectedPatientID);
-
-                SqlDataReader reader = sqlCommand.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
                 {
-                    // Auto-fill the patient name text box with the retrieved data
-                    txtName.Text = GetString(reader, "Name");
-                }
-                else
-                {
-                    // Clear the text box if no data is found for the selected PatientID
-                    txtName.Text = "";
+                    sqlCommand.Parameters.AddWithValue("@SelectedPatientID", selectedPatientID);
+
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // Auto-fill the patient name text box with the retrieved data
+                            txtName.Text = GetString(reader, "Name");
+                        }
+                        else
+                        {
+                            // Clear the text box if no data is found for the selected PatientID
+                            txtName.Text = "";
+                        }
+                    }
                 }
             }
             catch (SqlException ex)
@@ -277,12 +357,17 @@ namespace Esoft_Project.Forms
             }
             finally
             {
-                sqlConnection.Close();
+                // Close the connection only if it was opened in this block
+                if (sqlConnection.State == ConnectionState.Open)
+                {
+                    sqlConnection.Close();
+                }
             }
         }
 
-        private void ComboBoxEmpID_SelectedIndexChanged(object sender, EventArgs e)
+        private void HandleEmpIDSelection()
         {
+            // Your logic for ComboBoxEmpID selection
             if (ComboBoxEmpID.SelectedItem == null)
             {
                 return;
@@ -292,24 +377,31 @@ namespace Esoft_Project.Forms
 
             try
             {
-                sqlConnection.Open();
-
-                // Retrieve patient data based on the selected PatientID
-                string query = "SELECT Name FROM Users WHERE empID = @SelectedEmpID";
-                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@SelectedEmpID", selectedEmpID);
-
-                SqlDataReader reader = sqlCommand.ExecuteReader();
-
-                if (reader.Read())
+                // Using statement ensures that the connection is closed properly
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    // Auto-fill the patient name text box with the retrieved data
-                    txtempName.Text = GetString(reader, "Name");
-                }
-                else
-                {
-                    // Clear the text box if no data is found for the selected PatientID
-                    txtempName.Text = "";
+                    connection.Open();
+
+                    // Rest of your code to retrieve data
+                    string query = "SELECT Name FROM Users WHERE empID = @SelectedEmpID";
+                    using (SqlCommand sqlCommand = new SqlCommand(query, connection))
+                    {
+                        sqlCommand.Parameters.AddWithValue("@SelectedEmpID", selectedEmpID);
+
+                        using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // Auto-fill the patient name text box with the retrieved data
+                                txtempName.Text = GetString(reader, "Name");
+                            }
+                            else
+                            {
+                                // Clear the text box if no data is found for the selected EmpID
+                                txtempName.Text = "";
+                            }
+                        }
+                    }
                 }
             }
             catch (SqlException ex)
@@ -320,14 +412,11 @@ namespace Esoft_Project.Forms
             {
                 MessageBox.Show($"Error retrieving user data: {ex.Message}\n{ex.StackTrace}");
             }
-            finally
-            {
-                sqlConnection.Close();
-            }
         }
 
-        private void comboboxTestType_SelectedIndexChanged(object sender, EventArgs e)
+        private void HandleTestTypeSelection()
         {
+            // Your logic for comboboxTestType selection
             if (comboboxTestType.SelectedItem == null)
             {
                 return;
@@ -372,17 +461,134 @@ namespace Esoft_Project.Forms
             }
         }
 
+
+        private void comboboxReportCode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+
+        private string GetString(SqlDataReader reader, string columnName)
+        {
+            try
+            {
+                int columnIndex;
+                try
+                {
+                    columnIndex = reader.GetOrdinal(columnName);
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    // Handle the case where the column is not present in the result set
+                    MessageBox.Show($"Column not found: {columnName}");
+                    return string.Empty;
+                }
+
+                if (!reader.IsDBNull(columnIndex))
+                {
+                    if (reader.GetFieldType(columnIndex) == typeof(bool))
+                    {
+                        return reader.GetBoolean(columnIndex).ToString();
+                    }
+                    else if (reader.GetFieldType(columnIndex) == typeof(decimal))
+                    {
+                        return reader.GetDecimal(columnIndex).ToString();
+                    }
+                    else if (reader.GetFieldType(columnIndex) == typeof(int))
+                    {
+                        return reader.GetInt32(columnIndex).ToString();
+                    }
+
+                    return reader.GetString(columnIndex);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error retrieving data for column {columnName}: {ex.Message}\n{ex.StackTrace}");
+            }
+
+            return string.Empty;
+        }
+
+
+
+
+        // Helper method to get boolean value from SqlDataReader
+        private bool GetBoolean(SqlDataReader reader, string columnName)
+        {
+            int columnIndex = reader.GetOrdinal(columnName);
+            return reader.IsDBNull(columnIndex) ? false : reader.GetBoolean(columnIndex);
+        }
+
+        // Helper method to get DateTime value from SqlDataReader
+        private DateTime GetDateTime(SqlDataReader reader, string columnName)
+        {
+            int columnIndex = reader.GetOrdinal(columnName);
+            return reader.IsDBNull(columnIndex) ? DateTime.MinValue : reader.GetDateTime(columnIndex);
+        }
+
+        private void comboboxPatientID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+
+
+        private void ComboBoxEmpID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+
+        private void comboboxTestType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private bool IsReportCodeValid(string reportCode)
+        {
+            // Check if the ReportCode already exists in the database
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM Reports WHERE ReportCode = @ReportCode";
+                using (SqlCommand sqlCommand = new SqlCommand(query, connection))
+                {
+                    sqlCommand.Parameters.AddWithValue("@ReportCode", reportCode);
+
+                    int count = (int)sqlCommand.ExecuteScalar();
+
+                    // If count is greater than 0, the ReportCode already exists
+                    return count == 0;
+                }
+            }
+        }
+
         private void btnRequest_Click(object sender, EventArgs e)
         {
             try
-            {// Check if any of the required ComboBoxes is not selected
-                if (comboboxReportCode.Text == null || ComboBoxEmpID.SelectedItem == null || comboboxPatientID.SelectedItem == null ||
-                    comboboxTestType.SelectedItem == null || comboBoxPriority.SelectedItem == null ||
+            {
+                // Check if any of the required ComboBoxes is not selected
+                if (string.IsNullOrEmpty(comboboxReportCode.Text) ||
+                    ComboBoxEmpID.SelectedItem == null ||
+                    comboboxPatientID.SelectedItem == null ||
+                    comboboxTestType.SelectedItem == null ||
+                    comboBoxPriority.SelectedItem == null ||
                     comboBoxBilling.SelectedItem == null)
                 {
                     MessageBox.Show("Please select values for all required fields before submitting a request.");
                     return;
                 }
+
+                // Check if ReportCode is valid
+                string reportCode = comboboxReportCode.Text.Trim();
+                if (!IsReportCodeValid(reportCode))
+                {
+                    MessageBox.Show("ReportCode already exists in the database. Please enter a different ReportCode.");
+                    return;
+                }
+
                 sqlConnection.Open();
 
                 // Insert data into the database
@@ -391,7 +597,7 @@ namespace Esoft_Project.Forms
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
 
                 // Set parameters with the values from the form controls
-                sqlCommand.Parameters.AddWithValue("@ReportCode", comboboxReportCode.Text.ToString());
+                sqlCommand.Parameters.AddWithValue("@ReportCode", reportCode);
                 sqlCommand.Parameters.AddWithValue("@Date", DatePicker.Value);
                 sqlCommand.Parameters.AddWithValue("@EmpID", ComboBoxEmpID.SelectedItem.ToString());
                 sqlCommand.Parameters.AddWithValue("@PatientID", comboboxPatientID.SelectedItem.ToString());
@@ -427,26 +633,39 @@ namespace Esoft_Project.Forms
             finally
             {
                 sqlConnection.Close();
+                LoadComboBoxData();
             }
         }
+
 
         private void btnUpdateStatus_Click(object sender, EventArgs e)
         {
             try
-            { // Check if the ComboBox or radio button is not selected
+            {
+                // Check if the ComboBox or radio button is not selected
                 if (comboboxReportCode.SelectedItem == null)
+                {
+                    MessageBox.Show("Please select a ReportCode before updating the status.");
+                    return;
+                }
+
+                // Open the connection only if it is not already open
+                if (sqlConnection.State != ConnectionState.Open)
+                {
                     sqlConnection.Open();
+                }
 
                 // Update Status in the database
                 string query = "UPDATE Reports SET Status = @Status WHERE ReportCode = @ReportCode";
-                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
+                {
+                    // Set parameters with the values from the form controls
+                    sqlCommand.Parameters.AddWithValue("@Status", rbtnRequested.Checked ? "Requested" : rbtnInProgress.Checked ? "InProgress" : "Completed");
+                    sqlCommand.Parameters.AddWithValue("@ReportCode", comboboxReportCode.SelectedItem.ToString());
 
-                // Set parameters with the values from the form controls
-                sqlCommand.Parameters.AddWithValue("@Status", rbtnRequested.Checked ? "Requested" : rbtnInProgress.Checked ? "InProgress" : "Completed");
-                sqlCommand.Parameters.AddWithValue("@ReportCode", comboboxReportCode.SelectedItem.ToString());
-
-                sqlCommand.ExecuteNonQuery();
-                MessageBox.Show("Status updated successfully!");
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Status updated successfully!");
+                }
             }
             catch (SqlException ex)
             {
@@ -458,9 +677,14 @@ namespace Esoft_Project.Forms
             }
             finally
             {
-                sqlConnection.Close();
+                // Close the connection only if it was opened in this block
+                if (sqlConnection.State == ConnectionState.Open)
+                {
+                    sqlConnection.Close();
+                }
             }
         }
+
         private PrintDocument printDocument = new PrintDocument();
         private void btnPrint_Click(object sender, EventArgs e)
         {
