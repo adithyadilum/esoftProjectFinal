@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using ComponentFactory.Krypton.Toolkit;
+using System;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ComponentFactory.Krypton.Toolkit;
 
 namespace Esoft_Project
 {
     public partial class formLogin : KryptonForm
     {
-        private const string ConnectionString = "Data Source=Vostro3760;Initial Catalog=HMSdb;Integrated Security=True";
+        private const string ConnectionString = "Data Source=ROG-STRIX-G15;Initial Catalog=HMSdb;Integrated Security=True;";
         public formLogin()
         {
             InitializeComponent();
@@ -63,6 +57,17 @@ namespace Esoft_Project
 
                     return count > 0;
                 }
+            }
+        }
+
+        private void btnLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Trigger the Button click event
+                btnLogin.PerformClick();
+                // Optionally, you can prevent the Enter key from being processed by the TextBox
+                e.Handled = true;
             }
         }
     }
