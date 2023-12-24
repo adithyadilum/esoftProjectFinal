@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Media;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ComponentFactory.Krypton.Toolkit;
+﻿using ComponentFactory.Krypton.Toolkit;
 using Esoft_Project.Forms;
 using FontAwesome.Sharp;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Media;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Esoft_Project
 {
@@ -41,13 +36,13 @@ namespace Esoft_Project
         }
         private struct RGBColors
         {
-            public static Color color1 = Color.FromArgb(0, 44, 62); 
-            public static Color color2 = Color.FromArgb(120, 188, 196); 
-            public static Color color3 = Color.FromArgb(247, 248, 243); 
-            public static Color color4 = Color.FromArgb(247, 68, 78); 
+            public static Color color1 = Color.FromArgb(0, 44, 62);
+            public static Color color2 = Color.FromArgb(120, 188, 196);
+            public static Color color3 = Color.FromArgb(247, 248, 243);
+            public static Color color4 = Color.FromArgb(247, 68, 78);
         }
 
-  
+
         private void ActivateButton(object senderBtn, Color color)
         {
             if (senderBtn != null)
@@ -67,7 +62,7 @@ namespace Esoft_Project
                 grandparentPanel.UseGradientFill = false;
             }
         }
-       
+
         private void DisableButton(object senderBtn)
         {
             if (currentBtn != null)

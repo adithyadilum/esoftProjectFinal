@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Esoft_Project.Forms
@@ -31,12 +24,12 @@ namespace Esoft_Project.Forms
             {
                 sqlConnection.Open();
 
-   
+
                 string queryMaxPatientID = "SELECT MAX(PatientID) AS LastValue FROM PatientRecords";
                 SqlCommand sqlCommandMaxPatientID = new SqlCommand(queryMaxPatientID, sqlConnection);
                 var lastValue = sqlCommandMaxPatientID.ExecuteScalar();
 
-       
+
                 if (lastValue != DBNull.Value)
                 {
                     int defaultValue = Convert.ToInt32(lastValue) + 1;
@@ -107,9 +100,9 @@ namespace Esoft_Project.Forms
                     ComboBoxCondition.Text = reader["Condition"].ToString();
                     ComboBoxLabTests.Text = reader["Tests"].ToString();
                     txtNotes.Text = reader["SpecialNotes"].ToString();
-                
 
-                MessageBox.Show("Data loaded successfully!");
+
+                    MessageBox.Show("Data loaded successfully!");
                 }
                 else
                 {

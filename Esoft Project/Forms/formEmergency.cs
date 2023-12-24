@@ -199,7 +199,7 @@ namespace Esoft_Project.Forms
                                 rbtnHigh.Checked = true;
                                 rbtnModerate.Checked = false;
                             }
-                            
+
                         }
                         else
                         {
@@ -262,7 +262,7 @@ namespace Esoft_Project.Forms
                                 {
                                     //Clear txtName if no data is found for the selected PatientID
 
-                                   txtName.Text = "";
+                                    txtName.Text = "";
                                 }
                             }
                         }
@@ -288,7 +288,7 @@ namespace Esoft_Project.Forms
                                 {
                                     //Clear txtempName if no data is found for the selected empID
 
-                                   txtempName.Text = "";
+                                    txtempName.Text = "";
                                 }
                             }
                         }
@@ -647,6 +647,7 @@ namespace Esoft_Project.Forms
             rbtnHigh.Checked = false;
             rbtnLow.Checked = false;
             rbtnModerate.Checked = false;
+            DatePicker.Value = DateTime.Today;
         }
     }
 }
