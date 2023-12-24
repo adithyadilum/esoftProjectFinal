@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Esoft_Project.Forms
@@ -14,6 +9,7 @@ namespace Esoft_Project.Forms
     public partial class formEmergency : Form
     {
         SqlConnection sqlConnection = new SqlConnection("Data Source=ROG-STRIX-G15;Initial Catalog=HMSdb;Integrated Security=True;Encrypt=True; TrustServerCertificate=true;");
+        string connectionString = "Data Source=ROG-STRIX-G15;Initial Catalog=HMSdb;Integrated Security=True;Encrypt=True; TrustServerCertificate=true;";
         public formEmergency()
         {
             InitializeComponent();
@@ -110,9 +106,54 @@ namespace Esoft_Project.Forms
                 sqlConnection.Close();
             }
         }
-
-        private void btnView_Click(object sender, EventArgs e)
+        private bool isHandlingSelection = false;
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (isHandlingSelection)
+            {
+                // Another selection is already being handled, exit to avoid conflicts
+                return;
+            }
+
+            isHandlingSelection = true;
+
+            try
+            {
+                ComponentFactory.Krypton.Toolkit.KryptonComboBox comboBox = (ComponentFactory.Krypton.Toolkit.KryptonComboBox)sender;
+
+                switch (comboBox.Name)
+                {
+                    case "comboboxAlertID":
+                        HandleReportCodeSelection();
+                        break;
+
+                    case "comboboxPatientID":
+                        HandlePatientIDSelection();
+                        break;
+
+                    case "ComboBoxEmpID":
+                        HandleEmpIDSelection();
+                        break;
+
+                    case "comboboxEmergencyCode":
+                        HandleEmergencyCodeSelection();
+                        break;
+
+                    // Add more cases for other ComboBoxes if needed
+
+                    default:
+                        // Handle unexpected case
+                        break;
+                }
+            }
+            finally
+            {
+                isHandlingSelection = false;
+            }
+        }
+        private void HandleReportCodeSelection()
+        {
+            // Your logic for comboboxReportCode selection
             if (comboboxAlertID.SelectedItem == null)
             {
                 return;
@@ -126,41 +167,132 @@ namespace Esoft_Project.Forms
 
                 // Retrieve user data based on the selected comboboxAlertID
                 string query = "SELECT Date, empID, PatientID, SeverityLevel, EmergencyCode FROM Alerts WHERE AlertID = @SelectedValue";
-                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@SelectedValue", selectedValue);
-
-                SqlDataReader reader = sqlCommand.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
                 {
-                    // Populate the form controls with the retrieved data
-                    ComboBoxEmpID.SelectedItem = GetString(reader, "empID");
-                    comboboxPatientID.SelectedItem = GetString(reader, "PatientID");
-                    comboboxEmergencyCode.SelectedItem = GetString(reader, "EmergencyCode");
-                    DatePicker.Value = GetDateTime(reader, "Date");
-                    if (GetString(reader, "SeverityLevel") == "Low")
+                    sqlCommand.Parameters.AddWithValue("@SelectedValue", selectedValue);
+
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
-                        rbtnLow.Checked = true;
-                        rbtnHigh.Checked = false;
-                        rbtnModerate.Checked = false;
+
+                        if (reader.Read())
+                        {
+                            // Populate the form controls with the retrieved data
+                            ComboBoxEmpID.SelectedItem = GetString(reader, "empID");
+                            comboboxPatientID.SelectedItem = GetString(reader, "PatientID");
+                            comboboxEmergencyCode.SelectedItem = GetString(reader, "EmergencyCode");
+                            DatePicker.Value = GetDateTime(reader, "Date");
+                            if (GetString(reader, "SeverityLevel") == "Low")
+                            {
+                                rbtnLow.Checked = true;
+                                rbtnHigh.Checked = false;
+                                rbtnModerate.Checked = false;
+                            }
+                            else if (GetString(reader, "SeverityLevel") == "Moderate")
+                            {
+                                rbtnLow.Checked = false;
+                                rbtnHigh.Checked = false;
+                                rbtnModerate.Checked = true;
+                            }
+                            else
+                            {
+                                rbtnLow.Checked = false;
+                                rbtnHigh.Checked = true;
+                                rbtnModerate.Checked = false;
+                            }
+                            
+                        }
+                        else
+                        {
+                            MessageBox.Show("No data found for the selected Alert ID!");
+                        }
                     }
-                    else if (GetString(reader, "SeverityLevel") == "Moderate")
+
+                    // Retrieve data from EmergencyCode based on TestType
+                    string SelectedEmergencyCode = comboboxEmergencyCode.SelectedItem.ToString();
+                    string EmergencyCodeQuery = "SELECT EmergencyType, ColorCode FROM Emergency WHERE EmergencyCode = @SelectedEmergencyCode";
+                    using (SqlCommand EmergencyCodeCommand = new SqlCommand(EmergencyCodeQuery, sqlConnection))
                     {
-                        rbtnLow.Checked = false;
-                        rbtnHigh.Checked = false;
-                        rbtnModerate.Checked = true;
+                        EmergencyCodeCommand.Parameters.AddWithValue("@SelectedEmergencyCode", SelectedEmergencyCode);
+
+                        using (SqlDataReader EmergencyCodeReader = EmergencyCodeCommand.ExecuteReader())
+                        {
+                            if (EmergencyCodeReader.Read())
+                            {
+                                // Auto-fill the text box with the EmergencyType
+                                txtEmergencyType.Text = GetString(EmergencyCodeReader, "EmergencyType");
+                                string colorCodeString = GetString(EmergencyCodeReader, "ColorCode");
+                                Color backgroundColor = Color.FromArgb(
+                             Convert.ToInt32(colorCodeString.Split(',')[0]), // Red
+                             Convert.ToInt32(colorCodeString.Split(',')[1]), // Green
+                             Convert.ToInt32(colorCodeString.Split(',')[2])); // Blue 
+                                                                              // Set additional properties for the text box
+                                txtEmergencyType.StateCommon.Back.Color1 = backgroundColor;
+                                txtEmergencyType.StateCommon.Content.Color1 = Color.White;
+                                txtEmergencyType.StateCommon.Content.Font = new Font(txtEmergencyType.Font, FontStyle.Bold);
+                            }
+                            else
+                            {
+
+                                // Clear the text box if no data is found for the selected EmergencyCode
+                                txtEmergencyType.Text = "";
+                                txtEmergencyType.StateCommon.Back.Color1 = Color.FromArgb(247, 248, 243); // Set the default back color
+                                txtEmergencyType.StateCommon.Content.Color1 = SystemColors.ControlText; // Set the default fore color
+                                txtEmergencyType.StateCommon.Content.Font = new Font(txtEmergencyType.Font, FontStyle.Regular); // Set the default font style
+                            }
+                        }
                     }
-                    else
+
+                    //// Retrieve data from PatientRecords based on PatientID
+                    if (comboboxPatientID.SelectedItem != null)
                     {
-                        rbtnLow.Checked = false;
-                        rbtnHigh.Checked = true;
-                        rbtnModerate.Checked = false;
+                        string selectedPatientID = comboboxPatientID.SelectedItem.ToString();
+                        string patientQuery = "SELECT Name FROM PatientRecords WHERE PatientID = @SelectedPatientID";
+                        using (SqlCommand patientCommand = new SqlCommand(patientQuery, sqlConnection))
+                        {
+                            patientCommand.Parameters.AddWithValue("@SelectedPatientID", selectedPatientID);
+
+                            using (SqlDataReader patientReader = patientCommand.ExecuteReader())
+                            {
+                                if (patientReader.Read())
+                                {
+                                    //Auto - fill txtName with data from PatientRecords
+                                    txtName.Text = GetString(patientReader, "Name");
+                                }
+                                else
+                                {
+                                    //Clear txtName if no data is found for the selected PatientID
+
+                                   txtName.Text = "";
+                                }
+                            }
+                        }
                     }
-                    MessageBox.Show("Data loaded successfully!");
-                }
-                else
-                {
-                    MessageBox.Show("No data found for the selected Alert ID!");
+
+                    // Retrieve data from Users based on empID
+                    if (ComboBoxEmpID.SelectedItem != null)
+                    {
+                        string selectedEmpID = ComboBoxEmpID.SelectedItem.ToString();
+                        string userQuery = "SELECT Name FROM Users WHERE empID = @SelectedEmpID";
+                        using (SqlCommand userCommand = new SqlCommand(userQuery, sqlConnection))
+                        {
+                            userCommand.Parameters.AddWithValue("@SelectedEmpID", selectedEmpID);
+
+                            using (SqlDataReader userReader = userCommand.ExecuteReader())
+                            {
+                                if (userReader.Read())
+                                {
+                                    //Auto - fill txtempName with data from Users
+                                    txtempName.Text = GetString(userReader, "Name");
+                                }
+                                else
+                                {
+                                    //Clear txtempName if no data is found for the selected empID
+
+                                   txtempName.Text = "";
+                                }
+                            }
+                        }
+                    }
                 }
             }
             catch (SqlException ex)
@@ -169,7 +301,175 @@ namespace Esoft_Project.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error retrieving additional data: {ex.Message}\n{ex.StackTrace}");
+                MessageBox.Show($"Error retrieving report data: {ex.Message}\n{ex.StackTrace}");
+            }
+            finally
+            {
+                // Close the connection only once at the end of the method
+                sqlConnection.Close();
+                MessageBox.Show("Data loaded successfully!");
+            }
+        }
+
+
+        private void HandlePatientIDSelection()
+        {
+            // Your logic for comboboxPatientID selection
+            if (comboboxPatientID.SelectedItem == null)
+            {
+                return;
+            }
+
+            string selectedPatientID = comboboxPatientID.SelectedItem.ToString();
+
+            try
+            {
+                // Check if the connection is already open before trying to open it
+                if (sqlConnection.State != ConnectionState.Open)
+                {
+                    sqlConnection.Open();
+                }
+
+                // Retrieve patient data based on the selected PatientID
+                string query = "SELECT Name FROM PatientRecords WHERE PatientID = @SelectedPatientID";
+                using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
+                {
+                    sqlCommand.Parameters.AddWithValue("@SelectedPatientID", selectedPatientID);
+
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // Auto-fill the patient name text box with the retrieved data
+                            txtName.Text = GetString(reader, "Name");
+                        }
+                        else
+                        {
+                            // Clear the text box if no data is found for the selected PatientID
+                            txtName.Text = "";
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"SQL Error: {ex.Message}\n{ex.StackTrace}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error retrieving patient data: {ex.Message}\n{ex.StackTrace}");
+            }
+            finally
+            {
+                // Close the connection only if it was opened in this block
+                if (sqlConnection.State == ConnectionState.Open)
+                {
+                    sqlConnection.Close();
+                }
+            }
+        }
+
+        private void HandleEmpIDSelection()
+        {
+            // Your logic for ComboBoxEmpID selection
+            if (ComboBoxEmpID.SelectedItem == null)
+            {
+                return;
+            }
+
+            string selectedEmpID = ComboBoxEmpID.SelectedItem.ToString();
+
+            try
+            {
+                // Using statement ensures that the connection is closed properly
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Rest of your code to retrieve data
+                    string query = "SELECT Name FROM Users WHERE empID = @SelectedEmpID";
+                    using (SqlCommand sqlCommand = new SqlCommand(query, connection))
+                    {
+                        sqlCommand.Parameters.AddWithValue("@SelectedEmpID", selectedEmpID);
+
+                        using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // Auto-fill the patient name text box with the retrieved data
+                                txtempName.Text = GetString(reader, "Name");
+                            }
+                            else
+                            {
+                                // Clear the text box if no data is found for the selected EmpID
+                                txtempName.Text = "";
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"SQL Error: {ex.Message}\n{ex.StackTrace}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error retrieving user data: {ex.Message}\n{ex.StackTrace}");
+            }
+        }
+
+        private void HandleEmergencyCodeSelection()
+        {
+            if (comboboxEmergencyCode.SelectedItem == null)
+            {
+                return;
+            }
+
+            string selectedEmergencyCode = comboboxEmergencyCode.SelectedItem.ToString();
+
+            try
+            {
+                sqlConnection.Open();
+
+                // Retrieve emergency data based on the selected EmergencyCode
+                string query = "SELECT EmergencyType, ColorCode FROM Emergency WHERE EmergencyCode = @SelectedEmergencyCode";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@SelectedEmergencyCode", selectedEmergencyCode);
+
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    // Auto-fill the text box with the EmergencyType
+                    txtEmergencyType.Text = GetString(reader, "EmergencyType");
+                    string colorCodeString = GetString(reader, "ColorCode");
+                    Color backgroundColor = Color.FromArgb(
+                 Convert.ToInt32(colorCodeString.Split(',')[0]), // Red
+                 Convert.ToInt32(colorCodeString.Split(',')[1]), // Green
+                 Convert.ToInt32(colorCodeString.Split(',')[2])  // Blue
+             );
+
+                    // Set additional properties for the text box
+                    txtEmergencyType.StateCommon.Back.Color1 = backgroundColor;
+                    txtEmergencyType.StateCommon.Content.Color1 = Color.White;
+                    txtEmergencyType.StateCommon.Content.Font = new Font(txtEmergencyType.Font, FontStyle.Bold);
+                }
+                else
+                {
+                    // Clear the text box if no data is found for the selected EmergencyCode
+                    txtEmergencyType.Text = "";
+                    txtEmergencyType.StateCommon.Back.Color1 = Color.FromArgb(247, 248, 243); // Set the default back color
+                    txtEmergencyType.StateCommon.Content.Color1 = SystemColors.ControlText; // Set the default fore color
+                    txtEmergencyType.StateCommon.Content.Font = new Font(txtEmergencyType.Font, FontStyle.Regular); // Set the default font style
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"SQL Error: {ex.Message}\n{ex.StackTrace}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error retrieving emergency data: {ex.Message}\n{ex.StackTrace}");
             }
             finally
             {
@@ -329,154 +629,24 @@ namespace Esoft_Project.Forms
             }
         }
 
-        private void comboboxEmergencyCode_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
-            if (comboboxEmergencyCode.SelectedItem == null)
-            {
-                return;
-            }
+            comboboxEmergencyCode.SelectedItem = null;
+            comboboxAlertID.SelectedItem = null;
+            comboboxPatientID.SelectedItem = null;
+            ComboBoxEmpID.SelectedItem = null;
 
-            string selectedEmergencyCode = comboboxEmergencyCode.SelectedItem.ToString();
+            // Clear the text box if no data is found for the selected EmergencyCode
+            txtEmergencyType.Text = "";
+            txtEmergencyType.StateCommon.Back.Color1 = Color.FromArgb(247, 248, 243); // Set the default back color
+            txtEmergencyType.StateCommon.Content.Color1 = SystemColors.ControlText; // Set the default fore color
+            txtEmergencyType.StateCommon.Content.Font = new Font(txtEmergencyType.Font, FontStyle.Regular); // Set the default font style
 
-            try
-            {
-                sqlConnection.Open();
-
-                // Retrieve emergency data based on the selected EmergencyCode
-                string query = "SELECT EmergencyType, ColorCode FROM Emergency WHERE EmergencyCode = @SelectedEmergencyCode";
-                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@SelectedEmergencyCode", selectedEmergencyCode);
-
-                SqlDataReader reader = sqlCommand.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    // Auto-fill the text box with the EmergencyType
-                    txtEmergencyType.Text = GetString(reader, "EmergencyType");
-                    string colorCodeString = GetString(reader, "ColorCode");
-                    Color backgroundColor = Color.FromArgb(
-                 Convert.ToInt32(colorCodeString.Split(',')[0]), // Red
-                 Convert.ToInt32(colorCodeString.Split(',')[1]), // Green
-                 Convert.ToInt32(colorCodeString.Split(',')[2])  // Blue
-             );
-
-                    // Set additional properties for the text box
-                    txtEmergencyType.StateCommon.Back.Color1 = backgroundColor;
-                    txtEmergencyType.StateCommon.Content.Color1 = Color.White;
-                    txtEmergencyType.StateCommon.Content.Font = new Font(txtEmergencyType.Font, FontStyle.Bold);
-                }
-                else
-                {
-                    // Clear the text box if no data is found for the selected EmergencyCode
-                    txtEmergencyType.Text = "";
-                    txtEmergencyType.StateCommon.Back.Color1 = Color.FromArgb(247, 248, 243); // Set the default back color
-                    txtEmergencyType.StateCommon.Content.Color1 = SystemColors.ControlText; // Set the default fore color
-                    txtEmergencyType.StateCommon.Content.Font = new Font(txtEmergencyType.Font, FontStyle.Regular); // Set the default font style
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"SQL Error: {ex.Message}\n{ex.StackTrace}");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error retrieving emergency data: {ex.Message}\n{ex.StackTrace}");
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-        }
-
-        private void comboboxPatientID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboboxPatientID.SelectedItem == null)
-            {
-                return;
-            }
-
-            string selectedPatientID = comboboxPatientID.SelectedItem.ToString();
-
-            try
-            {
-                sqlConnection.Open();
-
-                // Retrieve patient data based on the selected PatientID
-                string query = "SELECT Name FROM PatientRecords WHERE PatientID = @SelectedPatientID";
-                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@SelectedPatientID", selectedPatientID);
-
-                SqlDataReader reader = sqlCommand.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    // Auto-fill the patient name text box with the retrieved data
-                    txtName.Text = GetString(reader, "Name");
-                }
-                else
-                {
-                    // Clear the text box if no data is found for the selected PatientID
-                    txtName.Text = "";
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"SQL Error: {ex.Message}\n{ex.StackTrace}");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error retrieving patient data: {ex.Message}\n{ex.StackTrace}");
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-        }
-
-        private void ComboBoxEmpID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            if (ComboBoxEmpID.SelectedItem == null)
-            {
-                return;
-            }
-
-            string selectedEmpID = ComboBoxEmpID.SelectedItem.ToString();
-
-            try
-            {
-                sqlConnection.Open();
-
-                // Retrieve patient data based on the selected PatientID
-                string query = "SELECT Name FROM Users WHERE empID = @SelectedEmpID";
-                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@SelectedEmpID", selectedEmpID);
-
-                SqlDataReader reader = sqlCommand.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    // Auto-fill the patient name text box with the retrieved data
-                    txtempName.Text = GetString(reader, "Name");
-                }
-                else
-                {
-                    // Clear the text box if no data is found for the selected PatientID
-                    txtempName.Text = "";
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"SQL Error: {ex.Message}\n{ex.StackTrace}");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error retrieving user data: {ex.Message}\n{ex.StackTrace}");
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
+            txtName.Text = "";
+            txtempName.Text = "";
+            rbtnHigh.Checked = false;
+            rbtnLow.Checked = false;
+            rbtnModerate.Checked = false;
         }
     }
 }

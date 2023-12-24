@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 30D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(2D, 11D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 30D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(2D, 11D);
             this.customPanel7 = new Esoft_Project.CustomPanel();
             this.barChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.kryptonLabel6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -52,6 +52,8 @@
             this.lblInprogress = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.customPanel4 = new Esoft_Project.CustomPanel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblAlertNo = new System.Windows.Forms.Label();
             this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.customPanel3 = new Esoft_Project.CustomPanel();
             this.lblCurrent = new System.Windows.Forms.Label();
@@ -68,8 +70,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelEsoftHospitals = new System.Windows.Forms.Label();
-            this.lblAlertNo = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.customPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barChart)).BeginInit();
             this.customPanel6.SuspendLayout();
@@ -93,9 +93,9 @@
             this.customPanel7.GradientAngle = 0F;
             this.customPanel7.GradientCenter = new System.Drawing.Point(100, 50);
             this.customPanel7.GradientType = Esoft_Project.GradientType.Linear;
-            this.customPanel7.Location = new System.Drawing.Point(12, 474);
+            this.customPanel7.Location = new System.Drawing.Point(359, 194);
             this.customPanel7.Name = "customPanel7";
-            this.customPanel7.Size = new System.Drawing.Size(333, 178);
+            this.customPanel7.Size = new System.Drawing.Size(350, 233);
             this.customPanel7.StartColor = System.Drawing.Color.White;
             this.customPanel7.TabIndex = 83;
             this.customPanel7.TopLeftCornerRadius = 20;
@@ -104,25 +104,25 @@
             // 
             // barChart
             // 
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisY.MajorGrid.Enabled = false;
-            chartArea1.Name = "ChartArea1";
-            this.barChart.ChartAreas.Add(chartArea1);
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.barChart.Legends.Add(legend1);
-            this.barChart.Location = new System.Drawing.Point(16, 35);
+            chartArea3.AxisX.MajorGrid.Enabled = false;
+            chartArea3.AxisY.MajorGrid.Enabled = false;
+            chartArea3.Name = "ChartArea1";
+            this.barChart.ChartAreas.Add(chartArea3);
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.barChart.Legends.Add(legend2);
+            this.barChart.Location = new System.Drawing.Point(21, 66);
             this.barChart.Name = "barChart";
             this.barChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.barChart.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(68)))), ((int)(((byte)(78)))))};
-            this.barChart.Size = new System.Drawing.Size(299, 126);
+            this.barChart.Size = new System.Drawing.Size(314, 140);
             this.barChart.TabIndex = 82;
             this.barChart.Text = "chart2";
             // 
             // kryptonLabel6
             // 
-            this.kryptonLabel6.Location = new System.Drawing.Point(3, 8);
+            this.kryptonLabel6.Location = new System.Drawing.Point(3, 12);
             this.kryptonLabel6.Name = "kryptonLabel6";
             this.kryptonLabel6.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonLabel6.Size = new System.Drawing.Size(123, 26);
@@ -148,9 +148,9 @@
             this.customPanel6.GradientAngle = 0F;
             this.customPanel6.GradientCenter = new System.Drawing.Point(100, 50);
             this.customPanel6.GradientType = Esoft_Project.GradientType.Linear;
-            this.customPanel6.Location = new System.Drawing.Point(356, 194);
+            this.customPanel6.Location = new System.Drawing.Point(359, 442);
             this.customPanel6.Name = "customPanel6";
-            this.customPanel6.Size = new System.Drawing.Size(353, 192);
+            this.customPanel6.Size = new System.Drawing.Size(353, 210);
             this.customPanel6.StartColor = System.Drawing.Color.White;
             this.customPanel6.TabIndex = 85;
             this.customPanel6.TopLeftCornerRadius = 20;
@@ -162,7 +162,7 @@
             this.lblNurNo.AutoSize = true;
             this.lblNurNo.BackColor = System.Drawing.Color.White;
             this.lblNurNo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNurNo.Location = new System.Drawing.Point(298, 126);
+            this.lblNurNo.Location = new System.Drawing.Point(298, 151);
             this.lblNurNo.Name = "lblNurNo";
             this.lblNurNo.Size = new System.Drawing.Size(0, 20);
             this.lblNurNo.TabIndex = 87;
@@ -173,7 +173,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(46, 126);
+            this.label8.Location = new System.Drawing.Point(46, 151);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(136, 18);
             this.label8.TabIndex = 86;
@@ -184,7 +184,7 @@
             this.lblPhyNo.AutoSize = true;
             this.lblPhyNo.BackColor = System.Drawing.Color.White;
             this.lblPhyNo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhyNo.Location = new System.Drawing.Point(296, 88);
+            this.lblPhyNo.Location = new System.Drawing.Point(296, 113);
             this.lblPhyNo.Name = "lblPhyNo";
             this.lblPhyNo.Size = new System.Drawing.Size(0, 20);
             this.lblPhyNo.TabIndex = 85;
@@ -195,7 +195,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(46, 88);
+            this.label6.Location = new System.Drawing.Point(46, 113);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(164, 18);
             this.label6.TabIndex = 84;
@@ -206,7 +206,7 @@
             this.lblStaffTotal.AutoSize = true;
             this.lblStaffTotal.BackColor = System.Drawing.Color.White;
             this.lblStaffTotal.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStaffTotal.Location = new System.Drawing.Point(296, 50);
+            this.lblStaffTotal.Location = new System.Drawing.Point(296, 75);
             this.lblStaffTotal.Name = "lblStaffTotal";
             this.lblStaffTotal.Size = new System.Drawing.Size(0, 20);
             this.lblStaffTotal.TabIndex = 83;
@@ -217,7 +217,7 @@
             this.lblName.AutoSize = true;
             this.lblName.BackColor = System.Drawing.Color.White;
             this.lblName.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(46, 50);
+            this.lblName.Location = new System.Drawing.Point(46, 75);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(157, 18);
             this.lblName.TabIndex = 82;
@@ -225,7 +225,7 @@
             // 
             // kryptonLabel5
             // 
-            this.kryptonLabel5.Location = new System.Drawing.Point(3, 8);
+            this.kryptonLabel5.Location = new System.Drawing.Point(3, 12);
             this.kryptonLabel5.Name = "kryptonLabel5";
             this.kryptonLabel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonLabel5.Size = new System.Drawing.Size(145, 26);
@@ -249,9 +249,9 @@
             this.customPanel5.GradientAngle = 0F;
             this.customPanel5.GradientCenter = new System.Drawing.Point(100, 50);
             this.customPanel5.GradientType = Esoft_Project.GradientType.Linear;
-            this.customPanel5.Location = new System.Drawing.Point(724, 399);
+            this.customPanel5.Location = new System.Drawing.Point(725, 419);
             this.customPanel5.Name = "customPanel5";
-            this.customPanel5.Size = new System.Drawing.Size(244, 133);
+            this.customPanel5.Size = new System.Drawing.Size(244, 163);
             this.customPanel5.StartColor = System.Drawing.Color.White;
             this.customPanel5.TabIndex = 84;
             this.customPanel5.TopLeftCornerRadius = 20;
@@ -260,7 +260,7 @@
             // 
             // kryptonLabel4
             // 
-            this.kryptonLabel4.Location = new System.Drawing.Point(3, 8);
+            this.kryptonLabel4.Location = new System.Drawing.Point(3, 12);
             this.kryptonLabel4.Name = "kryptonLabel4";
             this.kryptonLabel4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonLabel4.Size = new System.Drawing.Size(187, 26);
@@ -275,7 +275,7 @@
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.White;
             this.label20.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(44, 45);
+            this.label20.Location = new System.Drawing.Point(58, 71);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(87, 18);
             this.label20.TabIndex = 94;
@@ -286,7 +286,7 @@
             this.lblCompleted.AutoSize = true;
             this.lblCompleted.BackColor = System.Drawing.Color.White;
             this.lblCompleted.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompleted.Location = new System.Drawing.Point(161, 81);
+            this.lblCompleted.Location = new System.Drawing.Point(175, 107);
             this.lblCompleted.Name = "lblCompleted";
             this.lblCompleted.Size = new System.Drawing.Size(17, 20);
             this.lblCompleted.TabIndex = 97;
@@ -297,7 +297,7 @@
             this.lblInprogress.AutoSize = true;
             this.lblInprogress.BackColor = System.Drawing.Color.White;
             this.lblInprogress.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInprogress.Location = new System.Drawing.Point(161, 45);
+            this.lblInprogress.Location = new System.Drawing.Point(175, 71);
             this.lblInprogress.Name = "lblInprogress";
             this.lblInprogress.Size = new System.Drawing.Size(17, 20);
             this.lblInprogress.TabIndex = 95;
@@ -308,7 +308,7 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.White;
             this.label18.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(44, 78);
+            this.label18.Location = new System.Drawing.Point(58, 104);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(92, 18);
             this.label18.TabIndex = 96;
@@ -328,16 +328,40 @@
             this.customPanel4.GradientType = Esoft_Project.GradientType.Linear;
             this.customPanel4.Location = new System.Drawing.Point(724, 194);
             this.customPanel4.Name = "customPanel4";
-            this.customPanel4.Size = new System.Drawing.Size(244, 192);
+            this.customPanel4.Size = new System.Drawing.Size(244, 210);
             this.customPanel4.StartColor = System.Drawing.Color.White;
             this.customPanel4.TabIndex = 84;
             this.customPanel4.TopLeftCornerRadius = 20;
             this.customPanel4.TopRightCornerRadius = 20;
             this.customPanel4.UseGradientFill = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.White;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(81, 140);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(96, 20);
+            this.label5.TabIndex = 88;
+            this.label5.Text = "Alerts Today";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblAlertNo
+            // 
+            this.lblAlertNo.AutoSize = true;
+            this.lblAlertNo.BackColor = System.Drawing.Color.White;
+            this.lblAlertNo.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAlertNo.Location = new System.Drawing.Point(99, 82);
+            this.lblAlertNo.Name = "lblAlertNo";
+            this.lblAlertNo.Size = new System.Drawing.Size(61, 44);
+            this.lblAlertNo.TabIndex = 88;
+            this.lblAlertNo.Text = "11";
+            this.lblAlertNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // kryptonLabel2
             // 
-            this.kryptonLabel2.Location = new System.Drawing.Point(3, 8);
+            this.kryptonLabel2.Location = new System.Drawing.Point(3, 12);
             this.kryptonLabel2.Name = "kryptonLabel2";
             this.kryptonLabel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonLabel2.Size = new System.Drawing.Size(139, 26);
@@ -361,9 +385,9 @@
             this.customPanel3.GradientAngle = 0F;
             this.customPanel3.GradientCenter = new System.Drawing.Point(100, 50);
             this.customPanel3.GradientType = Esoft_Project.GradientType.Linear;
-            this.customPanel3.Location = new System.Drawing.Point(357, 399);
+            this.customPanel3.Location = new System.Drawing.Point(12, 477);
             this.customPanel3.Name = "customPanel3";
-            this.customPanel3.Size = new System.Drawing.Size(352, 133);
+            this.customPanel3.Size = new System.Drawing.Size(333, 175);
             this.customPanel3.StartColor = System.Drawing.Color.White;
             this.customPanel3.TabIndex = 83;
             this.customPanel3.TopLeftCornerRadius = 20;
@@ -375,7 +399,7 @@
             this.lblCurrent.AutoSize = true;
             this.lblCurrent.BackColor = System.Drawing.Color.White;
             this.lblCurrent.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrent.Location = new System.Drawing.Point(297, 80);
+            this.lblCurrent.Location = new System.Drawing.Point(284, 105);
             this.lblCurrent.Name = "lblCurrent";
             this.lblCurrent.Size = new System.Drawing.Size(0, 20);
             this.lblCurrent.TabIndex = 93;
@@ -383,7 +407,7 @@
             // 
             // kryptonLabel1
             // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(3, 8);
+            this.kryptonLabel1.Location = new System.Drawing.Point(3, 12);
             this.kryptonLabel1.Name = "kryptonLabel1";
             this.kryptonLabel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonLabel1.Size = new System.Drawing.Size(213, 26);
@@ -398,7 +422,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.White;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(45, 80);
+            this.label10.Location = new System.Drawing.Point(32, 105);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(178, 18);
             this.label10.TabIndex = 92;
@@ -409,7 +433,7 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.White;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(45, 43);
+            this.label14.Location = new System.Drawing.Point(32, 68);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(175, 18);
             this.label14.TabIndex = 88;
@@ -420,7 +444,7 @@
             this.lblTotalAdd.AutoSize = true;
             this.lblTotalAdd.BackColor = System.Drawing.Color.White;
             this.lblTotalAdd.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAdd.Location = new System.Drawing.Point(295, 43);
+            this.lblTotalAdd.Location = new System.Drawing.Point(282, 68);
             this.lblTotalAdd.Name = "lblTotalAdd";
             this.lblTotalAdd.Size = new System.Drawing.Size(0, 20);
             this.lblTotalAdd.TabIndex = 89;
@@ -448,28 +472,28 @@
             // 
             // donutChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.donutChart.ChartAreas.Add(chartArea2);
+            chartArea4.Name = "ChartArea1";
+            this.donutChart.ChartAreas.Add(chartArea4);
             this.donutChart.Location = new System.Drawing.Point(57, 35);
             this.donutChart.Name = "donutChart";
             this.donutChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series1.LabelForeColor = System.Drawing.Color.White;
-            series1.Name = "Series1";
-            dataPoint1.BorderColor = System.Drawing.Color.White;
-            dataPoint1.Color = System.Drawing.Color.Red;
-            series1.Points.Add(dataPoint1);
-            series1.Points.Add(dataPoint2);
-            this.donutChart.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series2.LabelForeColor = System.Drawing.Color.White;
+            series2.Name = "Series1";
+            dataPoint3.BorderColor = System.Drawing.Color.White;
+            dataPoint3.Color = System.Drawing.Color.Red;
+            series2.Points.Add(dataPoint3);
+            series2.Points.Add(dataPoint4);
+            this.donutChart.Series.Add(series2);
             this.donutChart.Size = new System.Drawing.Size(238, 210);
             this.donutChart.TabIndex = 82;
             this.donutChart.Text = "chart1";
             // 
             // kryptonLabel3
             // 
-            this.kryptonLabel3.Location = new System.Drawing.Point(3, 8);
+            this.kryptonLabel3.Location = new System.Drawing.Point(3, 12);
             this.kryptonLabel3.Name = "kryptonLabel3";
             this.kryptonLabel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.kryptonLabel3.Size = new System.Drawing.Size(132, 26);
@@ -562,30 +586,6 @@
             this.labelEsoftHospitals.Size = new System.Drawing.Size(261, 46);
             this.labelEsoftHospitals.TabIndex = 11;
             this.labelEsoftHospitals.Text = "Esoft Hospitals";
-            // 
-            // lblAlertNo
-            // 
-            this.lblAlertNo.AutoSize = true;
-            this.lblAlertNo.BackColor = System.Drawing.Color.White;
-            this.lblAlertNo.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAlertNo.Location = new System.Drawing.Point(95, 68);
-            this.lblAlertNo.Name = "lblAlertNo";
-            this.lblAlertNo.Size = new System.Drawing.Size(61, 44);
-            this.lblAlertNo.TabIndex = 88;
-            this.lblAlertNo.Text = "11";
-            this.lblAlertNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(77, 126);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 20);
-            this.label5.TabIndex = 88;
-            this.label5.Text = "Alerts Today";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // formOverview
             // 
