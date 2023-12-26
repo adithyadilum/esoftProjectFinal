@@ -162,6 +162,7 @@ namespace Esoft_Project.Forms
             rbtnMale.Checked = false;
             rbtnFemale.Checked = false;
             DateTimeDob.Value = DateTime.Now;
+            comboBoxMarital.SelectedIndex = -1;
             comboBoxMarital.Text = string.Empty;
             txtNic.Clear();
             comboBoxLanguage.Text = string.Empty;

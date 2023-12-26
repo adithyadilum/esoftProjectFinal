@@ -254,10 +254,8 @@
             this.ComboBoxLabTests.DropButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ButtonSpec;
             this.ComboBoxLabTests.DropDownWidth = 117;
             this.ComboBoxLabTests.Items.AddRange(new object[] {
-            "Sinhala",
-            "Tamil",
-            "English",
-            "Other"});
+            "Request",
+            "Not needed"});
             this.ComboBoxLabTests.Location = new System.Drawing.Point(769, 342);
             this.ComboBoxLabTests.MaxDropDownItems = 4;
             this.ComboBoxLabTests.Name = "ComboBoxLabTests";
@@ -287,10 +285,8 @@
             this.ComboBoxCondition.DropButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ButtonSpec;
             this.ComboBoxCondition.DropDownWidth = 117;
             this.ComboBoxCondition.Items.AddRange(new object[] {
-            "Sinhala",
-            "Tamil",
-            "English",
-            "Other"});
+            "Critical",
+            "Stable"});
             this.ComboBoxCondition.Location = new System.Drawing.Point(769, 308);
             this.ComboBoxCondition.MaxDropDownItems = 4;
             this.ComboBoxCondition.Name = "ComboBoxCondition";
@@ -462,6 +458,21 @@
             this.comboboxDepartment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboboxDepartment.DropButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ButtonSpec;
             this.comboboxDepartment.DropDownWidth = 117;
+            this.comboboxDepartment.Items.AddRange(new object[] {
+            "Emergency Department",
+            "Medical/Surgical Unit",
+            "Intensive Care Unit (ICU)",
+            "Pediatrics",
+            "Obstetrics and Gynecology",
+            "Laboratory Services",
+            "Radiology Department",
+            "Pharmacy",
+            "Operating Room ",
+            "Anesthesiology",
+            "Cardiology",
+            "Neurology",
+            "Oncology",
+            "Physical Therapy"});
             this.comboboxDepartment.Location = new System.Drawing.Point(200, 121);
             this.comboboxDepartment.MaxDropDownItems = 4;
             this.comboboxDepartment.Name = "comboboxDepartment";

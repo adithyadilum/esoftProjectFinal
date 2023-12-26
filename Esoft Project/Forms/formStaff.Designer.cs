@@ -320,10 +320,20 @@
             this.comboboxDepartment.DropButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ButtonSpec;
             this.comboboxDepartment.DropDownWidth = 117;
             this.comboboxDepartment.Items.AddRange(new object[] {
-            "Sinhala",
-            "Tamil",
-            "English",
-            "Other"});
+            "Emergency Department",
+            "Medical/Surgical Unit",
+            "Intensive Care Unit (ICU)",
+            "Pediatrics",
+            "Obstetrics and Gynecology",
+            "Laboratory Services",
+            "Radiology Department",
+            "Pharmacy",
+            "Operating Room ",
+            "Anesthesiology",
+            "Cardiology",
+            "Neurology",
+            "Oncology",
+            "Physical Therapy"});
             this.comboboxDepartment.Location = new System.Drawing.Point(200, 594);
             this.comboboxDepartment.MaxDropDownItems = 4;
             this.comboboxDepartment.Name = "comboboxDepartment";
