@@ -231,6 +231,7 @@ namespace Esoft_Project.Forms
             finally
             {
                 sqlConnection.Close();
+                LoadComboBoxData();
             }
         }
 
@@ -344,6 +345,7 @@ namespace Esoft_Project.Forms
             finally
             {
                 sqlConnection.Close();
+                LoadComboBoxData();
             }
         }
     }

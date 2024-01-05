@@ -198,6 +198,7 @@
             this.btnClear.Size = new System.Drawing.Size(151, 42);
             this.btnClear.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
             this.btnClear.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(44)))), ((int)(((byte)(62)))));
+            this.btnClear.StateCommon.Back.ColorAngle = 90F;
             this.btnClear.StateCommon.Border.Color1 = System.Drawing.Color.White;
             this.btnClear.StateCommon.Border.Color2 = System.Drawing.Color.White;
             this.btnClear.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 

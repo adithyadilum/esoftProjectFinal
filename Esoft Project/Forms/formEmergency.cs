@@ -66,7 +66,7 @@ namespace Esoft_Project.Forms
             try
             {
                 sqlConnection.Open();
-
+                comboboxAlertID.Items.Clear();
                 string queryAllAlertIDs = "SELECT AlertID FROM Alerts";
                 SqlCommand sqlCommandAllAlertIDs = new SqlCommand(queryAllAlertIDs, sqlConnection);
                 SqlDataReader reader = sqlCommandAllAlertIDs.ExecuteReader();
@@ -548,13 +548,23 @@ namespace Esoft_Project.Forms
                 MessageBox.Show("Alert Initiated successfully!");
 
                 // Clear form controls or perform other actions after deletion
-                comboboxPatientID.Text = "";
-                ComboBoxEmpID.Text = "";
-                comboboxEmergencyCode.Text = "";
-                DatePicker.Value = DateTime.Now;
+                comboboxEmergencyCode.SelectedItem = null;
+                comboboxAlertID.SelectedItem = null;
+                comboboxPatientID.SelectedItem = null;
+                ComboBoxEmpID.SelectedItem = null;
+
+                // Clear the text box if no data is found for the selected EmergencyCode
+                txtEmergencyType.Text = "";
+                txtEmergencyType.StateCommon.Back.Color1 = Color.FromArgb(247, 248, 243); // Set the default back color
+                txtEmergencyType.StateCommon.Content.Color1 = SystemColors.ControlText; // Set the default fore color
+                txtEmergencyType.StateCommon.Content.Font = new Font(txtEmergencyType.Font, FontStyle.Regular); // Set the default font style
+
+                txtName.Text = "";
+                txtempName.Text = "";
+                rbtnHigh.Checked = false;
                 rbtnLow.Checked = false;
                 rbtnModerate.Checked = false;
-                rbtnHigh.Checked = false;
+                DatePicker.Value = DateTime.Today;
 
 
 
@@ -599,16 +609,26 @@ namespace Esoft_Project.Forms
                     MessageBox.Show("Alert removed successfully!");
 
                     // Clear form controls or perform other actions after deletion
-                    comboboxPatientID.Text = "";
-                    ComboBoxEmpID.Text = "";
-                    comboboxEmergencyCode.Text = "";
-                    DatePicker.Value = DateTime.Now;
+                    comboboxEmergencyCode.SelectedItem = null;
+                    comboboxAlertID.SelectedItem = null;
+                    comboboxPatientID.SelectedItem = null;
+                    ComboBoxEmpID.SelectedItem = null;
+
+                    // Clear the text box if no data is found for the selected EmergencyCode
+                    txtEmergencyType.Text = "";
+                    txtEmergencyType.StateCommon.Back.Color1 = Color.FromArgb(247, 248, 243); // Set the default back color
+                    txtEmergencyType.StateCommon.Content.Color1 = SystemColors.ControlText; // Set the default fore color
+                    txtEmergencyType.StateCommon.Content.Font = new Font(txtEmergencyType.Font, FontStyle.Regular); // Set the default font style
+
+                    txtName.Text = "";
+                    txtempName.Text = "";
+                    rbtnHigh.Checked = false;
                     rbtnLow.Checked = false;
                     rbtnModerate.Checked = false;
-                    rbtnHigh.Checked = false;
+                    DatePicker.Value = DateTime.Today;
 
-                    // Optionally, reload the ComboBox data after deletion
-                    LoadComboBoxData();
+
+
                 }
                 else
                 {
@@ -626,6 +646,7 @@ namespace Esoft_Project.Forms
             finally
             {
                 sqlConnection.Close();
+                LoadComboBoxData();
             }
         }
 

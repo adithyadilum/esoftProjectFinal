@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 
@@ -642,16 +643,23 @@ namespace Esoft_Project.Forms
             }
         }
 
-        private PrintDocument printDocument = new PrintDocument();
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.PrintDialog printDialog = new System.Windows.Forms.PrintDialog();
-            printDialog.Document = printDocument;
-
-            if (printDialog.ShowDialog() == DialogResult.OK)
-            {
-                printDocument.Print();
-            }
+        
+            comboboxPatientID.Text = null;
+            ComboBoxEmpID.Text = null;
+            txtName.Text = "";
+            txtempName.Text = "";
+            rbtnInProgress.Checked = false;
+            rbtnCompleted.Checked = false;
+            rbtnRequested.Checked = false;
+            DatePicker.Value = DateTime.Today;
+            comboboxReportCode.Text = null;
+            comboboxTestType.Text = null;
+            comboBoxPriority.Text = null;
+            txtDescription.Text = null;
+            txtCost.Text = null;
+            comboBoxBilling.Text = null;
         }
 
     }

@@ -181,22 +181,32 @@ namespace Esoft_Project.Forms
         // Add a new row to the DataTable
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // Check if the last row is not already empty
-            if (dataTable.Rows.Count == 0 || !IsRowEmpty(dataTable.Rows[dataTable.Rows.Count - 1]))
+            try
             {
-                // Create a new DataRow with the same schema as the DataTable
-                DataRow newRow = dataTable.NewRow();
+                // Open the connection
+                sqlConnection.Open();
 
-                // Add the new DataRow to the DataTable
-                dataTable.Rows.Add(newRow);
+                // Update the database with changes from the DataTable
+                dataAdapter.Update(dataTable);
 
-                // Refresh the DataGridView to reflect the changes
-                DataGridViewInventory.Refresh();
+                // Refresh the DataTable to reflect changes
+                dataTable.Clear();
+                dataAdapter.Fill(dataTable);
+
+                MessageBox.Show("Item added successfully!");
+                // Update the chart with the latest data
+                InitializeChart();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please fill in the current empty row before adding a new one.");
+                MessageBox.Show("Error saving changes: " + ex.Message);
             }
+            finally
+            {
+                // Close the connection
+                sqlConnection.Close();
+            }
+            LoadComboBoxData();
         }
 
         // Helper method to check if a DataRow is empty
@@ -270,8 +280,7 @@ namespace Esoft_Project.Forms
                     MessageBox.Show("Record deleted successfully!");
 
                     // Reload data to refresh DataGridView and Chart
-                    LoadData();
-                    InitializeChart();
+                    
                 }
                 else
                 {
@@ -285,6 +294,9 @@ namespace Esoft_Project.Forms
             finally
             {
                 sqlConnection.Close();
+                LoadData();
+                InitializeChart();
+                LoadComboBoxData();
             }
         }
     }
