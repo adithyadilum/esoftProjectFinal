@@ -1,9 +1,25 @@
-# Final Project
-Final project for Diploma in IT at Esoft Metro Campus.
-The Esoft Hospitals - HMS is the final project undertaken by Group C. The project involves the 
-development of a simple Hospital Management System for the imaginary hospital "Esoft 
-Hospitals." The HMS aims to streamline hospital operations and improve overall efficiency by 
-providing a user-friendly interface for managing various aspects of the hospital
+# Hospital Management System (HMS)
+The Esoft Hospitals - HMS is the final project undertaken as part of the Diploma in IT program at Esoft Metro Campus. This completed project involves the development of a simple yet effective Hospital Management System for the imaginary hospital "Esoft Hospitals." The HMS successfully streamlines hospital operations and improves overall efficiency by providing a user-friendly interface for managing various aspects of the hospital.
+
+Key Features:
+
+Patient Management: Efficiently manages patient records, including admissions, discharges, and medical histories.
+Appointment Scheduling: Facilitates easy scheduling and management of doctor appointments.
+Staff Management: Handles staff details and their schedules.
+Billing System: Streamlines the billing process with accurate and timely generation of bills.
+Inventory Management: Keeps track of hospital inventory, including medicines and equipment.
+Technology Stack:
+
+Programming Language: Developed using C# .NET
+Database: MS SQL Server
+User Interface: Utilized custom UI components to enhance user experience and ensure an intuitive and engaging interface.
+Project Outcomes:
+
+Improved Efficiency: The system has significantly improved the efficiency of hospital operations, reducing administrative workload and speeding up processes.
+User-Friendly Interface: Custom UI components have ensured that the interface is intuitive, making it easy for staff to navigate and use the system.
+Accurate Data Management: The system provides accurate and timely access to patient and hospital data, enhancing decision-making and patient care.
+Scalability and Maintenance: The system is designed to be easily maintained and scaled, ensuring that it can grow with the needs of the hospital.
+The successful completion of this project demonstrates the practical application of IT skills acquired during the course and serves as a valuable tool for managing hospital operations.
 
 
 
